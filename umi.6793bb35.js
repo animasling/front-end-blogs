@@ -1629,6 +1629,7 @@ const devConfig = {
     static: {
       directory: path.join(__dirname, '../public') //\u6258\u7BA1\u9759\u6001\u8D44\u6E90public\u6587\u4EF6\u5939
     },
+    https: true, // \u5F00\u542Fhttps\u534F\u8BAE
   }
 }
 `,paraId:43,tocIndex:9},{value:"\u4FEE\u6539 ",paraId:44,tocIndex:9},{value:"webpack.common.js",paraId:44,tocIndex:9},{value:" ,\u5C06 ",paraId:44,tocIndex:9},{value:"dev",paraId:44,tocIndex:9},{value:" \u914D\u7F6E\u5408\u5E76\u8FDB\u53BB\u3002",paraId:44,tocIndex:9},{value:`// webpack.common.js
