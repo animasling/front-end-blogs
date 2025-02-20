@@ -2253,11 +2253,11 @@ const smp = new SpeedMeasurePlugin(); // \u5B9E\u4F8B\u5316\u5206\u6790\u63D2\u4
 
 // \u4F7F\u7528smp.wrap\u65B9\u6CD5\uFF0C\u628A\u751F\u4EA7\u73AF\u5883\u914D\u7F6E\u4F20\u8FDB\u53BB\uFF0C\u7531\u4E8E\u540E\u9762\u53EF\u80FD\u4F1A\u52A0\u5206\u6790\u914D\u7F6E\uFF0C\u6240\u4EE5\u5148\u7559\u51FA\u5408\u5E76\u7A7A\u4F4D
 module.exports = smp.wrap(
-  merge(commonConfig\uFF0C {
+  merge(commonConfig, {
     plugins: [
-      new BundleAnalyzerPlugin()\uFF0C // \u914D\u7F6E\u5206\u6790\u6253\u5305\u7ED3\u679C\u63D2\u4EF6
-    ]\uFF0C
-  })\uFF0C
+      new BundleAnalyzerPlugin(), // \u914D\u7F6E\u5206\u6790\u6253\u5305\u7ED3\u679C\u63D2\u4EF6
+    ],
+  }),
 );
 `,paraId:3,tocIndex:0},{value:"\u914D\u7F6E\u597D\u540E\uFF0C\u6267\u884C ",paraId:4,tocIndex:0},{value:"yarn run build:analy",paraId:4,tocIndex:0},{value:"\u547D\u4EE4\uFF0C\u6253\u5305\u5B8C\u6210\u540E\u6D4F\u89C8\u5668\u4F1A\u81EA\u52A8\u6253\u5F00\u7A97\u53E3\uFF0C\u53EF\u4EE5\u770B\u5230\u6253\u5305\u6587\u4EF6\u7684\u5206\u6790\u7ED3\u679C\u9875\u9762\uFF0C\u53EF\u4EE5\u770B\u5230\u5404\u4E2A\u6587\u4EF6\u6240\u5360\u7684\u8D44\u6E90\u5927\u5C0F\u3002",paraId:4,tocIndex:0},{value:"\u5728\u751F\u4EA7\u73AF\u5883\u6211\u4EEC\u5E0C\u671B\u628A",paraId:5,tocIndex:1},{value:"css",paraId:5,tocIndex:1},{value:"\u5355\u72EC\u62BD\u79BB\u51FA\u6765\uFF0C\u65B9\u4FBF\u914D\u7F6E\u7F13\u5B58\u7B56\u7565\u3002\u800C\u63D2\u4EF6",paraId:5,tocIndex:1},{value:"mini-css-extract-plugin",paraId:5,tocIndex:1},{value:"\u5C31\u662F\u6765\u5E2E\u6211\u4EEC\u505A\u8FD9\u4EF6\u4E8B\u3002",paraId:5,tocIndex:1},{value:`yarn add mini-css-extract-plugin -D
 `,paraId:6,tocIndex:1},{value:"\u4FEE\u6539 ",paraId:7,tocIndex:1},{value:"webpack.common.js",paraId:7,tocIndex:1},{value:"\uFF0C\u6839\u636E\u73AF\u5883\u53D8\u91CF\u8BBE\u7F6E\u5F00\u53D1\u73AF\u5883\u4F7F\u7528",paraId:7,tocIndex:1},{value:"style-loader",paraId:7,tocIndex:1},{value:"\u8FD8\u662F\u6253\u5305\u6A21\u5F0F\u62BD\u79BB",paraId:7,tocIndex:1},{value:"css",paraId:7,tocIndex:1},{value:"\u3002",paraId:7,tocIndex:1},{value:`// webpack.common.js
@@ -2281,18 +2281,18 @@ const commonConfig = {
         ]
       },
       {
-        test: /.less$/\uFF0C //\u5339\u914D css\u548Cless \u6587\u4EF6
+        test: /.less$/, //\u5339\u914D css\u548Cless \u6587\u4EF6
         use: [
           // 4.\u5F00\u53D1\u73AF\u5883\u5C06\u89E3\u6790\u540E\u7684css \u63D2\u5165\u5230\u5934\u90E8style\u6807\u7B7E\u4E2D(\u505A\u4E86\u6837\u5F0F\u7684\u70ED\u66FF\u6362\u529F\u80FD),\u751F\u4EA7\u73AF\u5883\u62BD\u79BBcss\u4E3A\u5355\u72EC\u6587\u4EF6
           !isProd ? 'style-loader' : MiniCssExtractPlugin.loader,
-          // 3.\u89E3\u6790css \u4E3A\u6D4F\u89C8\u5668\u53EF\u4EE5\u8BC6\u522B\u7684\u3002 \u5F00\u542FcssModule\uFF0C @import \u7684css\u6587\u4EF6\u4E5F\u901A\u8FC7\u540E\u97622\u4E2Aloader\u7684\u5904\u7406
-          { loader: 'css-loader'\uFF0C options: { modules: true\uFF0C importLoaders: 2 } }\uFF0C
+          // 3.\u89E3\u6790css \u4E3A\u6D4F\u89C8\u5668\u53EF\u4EE5\u8BC6\u522B\u7684\u3002 \u5F00\u542FcssModule, @import \u7684css\u6587\u4EF6\u4E5F\u901A\u8FC7\u540E\u97622\u4E2Aloader\u7684\u5904\u7406
+          { loader: 'css-loader', options: { modules: true, importLoaders: 2 } },
           // 2. \u7ED9css \u6DFB\u52A0\u517C\u5BB9\u6D4F\u89C8\u5668\u7684\u524D\u7F00
-          'postcss-loader'\uFF0C
+          'postcss-loader',
           // 1.\u5C06less \u89E3\u6790\u4E3Acss
           'less-loader'
         ]
-      }\uFF0C
+      },
     ]
   }
 }
@@ -2305,7 +2305,7 @@ const generatorPlugin = configs => {
     plugins.push(
        new MiniCssExtractPlugin({
         filename: 'static/css/[name].css' // \u62BD\u79BBcss\u7684\u8F93\u51FA\u76EE\u5F55\u548C\u540D\u79F0
-      })\uFF0C
+      }),
     );
   }
   return plugins;
@@ -2318,9 +2318,9 @@ const prodConfig = {
   // ...
   optimization: {
     minimizer: [
-      new CssMinimizerPlugin()\uFF0C // \u538B\u7F29css
-    ]\uFF0C
-  }\uFF0C
+      new CssMinimizerPlugin(), // \u538B\u7F29css
+    ],
+  },
 };
 `,paraId:13,tocIndex:2},{value:"\u518D\u6B21\u6267\u884C\u6253\u5305\u5C31\u53EF\u4EE5\u770B\u5230",paraId:14,tocIndex:2},{value:"css",paraId:14,tocIndex:2},{value:"\u5DF2\u7ECF\u88AB\u538B\u7F29\u4E86\u3002",paraId:14,tocIndex:2},{value:"\u8BBE\u7F6E",paraId:15,tocIndex:3},{value:"mode",paraId:15,tocIndex:3},{value:"\u4E3A",paraId:15,tocIndex:3},{value:"production",paraId:15,tocIndex:3},{value:"\u65F6\uFF0C",paraId:15,tocIndex:3},{value:"webpack",paraId:15,tocIndex:3},{value:"\u4F1A\u4F7F\u7528\u5185\u7F6E\u63D2\u4EF6",paraId:15,tocIndex:3},{value:"terser-webpack-plugin",paraId:15,tocIndex:3},{value:"\u538B\u7F29",paraId:15,tocIndex:3},{value:"js",paraId:15,tocIndex:3},{value:"\u6587\u4EF6\uFF0C\u8BE5\u63D2\u4EF6\u9ED8\u8BA4\u652F\u6301\u591A\u7EBF\u7A0B\u538B\u7F29\uFF0C\u4F46\u662F\u4E0A\u9762\u914D\u7F6E",paraId:15,tocIndex:3},{value:"optimization.minimizer",paraId:15,tocIndex:3},{value:"\u538B\u7F29",paraId:15,tocIndex:3},{value:"css",paraId:15,tocIndex:3},{value:"\u540E\uFF0C",paraId:15,tocIndex:3},{value:"js",paraId:15,tocIndex:3},{value:"\u538B\u7F29\u5C31\u5931\u6548\u4E86\uFF0C\u9700\u8981\u624B\u52A8\u518D\u6DFB\u52A0\u4E00\u4E0B\u3002",paraId:15,tocIndex:3},{value:`yarn add terser-webpack-plugin -D
 `,paraId:16,tocIndex:3},{value:"\u4FEE\u6539 ",paraId:17,tocIndex:3},{value:"webpack.prod.js",paraId:17,tocIndex:3},{value:" \u6587\u4EF6\u3002",paraId:17,tocIndex:3},{value:`const TerserPlugin = require('terser-webpack-plugin');
@@ -2331,15 +2331,15 @@ const prodConfig = {
       // ...
       new TerserPlugin({
         // \u538B\u7F29js
-        parallel: true\uFF0C // \u5F00\u542F\u591A\u7EBF\u7A0B\u538B\u7F29
+        parallel: true, // \u5F00\u542F\u591A\u7EBF\u7A0B\u538B\u7F29
         terserOptions: {
           compress: {
-            pure_funcs: ['console.log']\uFF0C // \u5220\u9664console.log
-          }\uFF0C
-        }\uFF0C
-      })\uFF0C
-    ]\uFF0C
-  }\uFF0C
+            pure_funcs: ['console.log'], // \u5220\u9664console.log
+          },
+        },
+      }),
+    ],
+  },
 };
 `,paraId:18,tocIndex:3},{value:"\u914D\u7F6E\u5B8C\u6210\u540E\u518D\u6253\u5305\uFF0C",paraId:19,tocIndex:3},{value:"css",paraId:19,tocIndex:3},{value:"\u548C",paraId:19,tocIndex:3},{value:"js",paraId:19,tocIndex:3},{value:"\u5C31\u90FD\u53EF\u4EE5\u88AB\u538B\u7F29\u4E86\u3002",paraId:19,tocIndex:3},{value:"\u5408\u7406\u914D\u7F6E",paraId:20,tocIndex:4},{value:"hash",paraId:20,tocIndex:4},{value:"\uFF0C\u5229\u7528\u6D4F\u89C8\u5668\u7F13\u5B58\u6765\u63D0\u5347\u524D\u7AEF\u52A0\u8F7D\u9875\u9762\u901F\u5EA6\u548C\u51CF\u5C11\u670D\u52A1\u5668\u538B\u529B\u3002",paraId:20,tocIndex:4},{value:"webpack",paraId:21,tocIndex:4},{value:"\u6253\u5305\u7684",paraId:21,tocIndex:4},{value:"hash",paraId:21,tocIndex:4},{value:"\u5206\u4E09\u79CD\uFF1A",paraId:21,tocIndex:4},{value:"\u3010",paraId:22,tocIndex:4},{value:"hash",paraId:22,tocIndex:4},{value:"\u3011\uFF1A\u8DDF\u6574\u4E2A\u9879\u76EE\u7684\u6784\u5EFA\u76F8\u5173\uFF0C\u53EA\u8981",paraId:22,tocIndex:4},{value:"\u9879\u76EE\u91CC\u6709\u6587\u4EF6\u66F4\u6539",paraId:22,tocIndex:4},{value:"\uFF0C\u6574\u4E2A\u9879\u76EE\u6784\u5EFA\u7684",paraId:22,tocIndex:4},{value:"hash",paraId:22,tocIndex:4},{value:"\u503C\u90FD\u4F1A\u66F4\u6539\uFF0C\u5E76\u4E14\u5168\u90E8\u6587\u4EF6\u90FD\u5171\u7528\u76F8\u540C\u7684",paraId:22,tocIndex:4},{value:"hash",paraId:22,tocIndex:4},{value:"\u503C\u3002",paraId:22,tocIndex:4},{value:"\u3010",paraId:22,tocIndex:4},{value:"chunkhash",paraId:22,tocIndex:4},{value:"\u3011\uFF1A\u4E0D\u540C\u7684\u5165\u53E3\u6587\u4EF6\u8FDB\u884C\u4F9D\u8D56\u6587\u4EF6\u89E3\u6790\u3001\u6784\u5EFA\u5BF9\u5E94\u7684",paraId:22,tocIndex:4},{value:"chunk",paraId:22,tocIndex:4},{value:"\uFF0C\u751F\u6210\u5BF9\u5E94\u7684\u54C8\u5E0C\u503C\uFF0C",paraId:22,tocIndex:4},{value:"\u6587\u4EF6\u672C\u8EAB\u4FEE\u6539\u6216\u8005\u4F9D\u8D56\u6587\u4EF6\u4FEE\u6539",paraId:22,tocIndex:4},{value:"\uFF0C",paraId:22,tocIndex:4},{value:"chunkhash",paraId:22,tocIndex:4},{value:"\u503C\u4F1A\u53D8\u5316\u3002",paraId:22,tocIndex:4},{value:"\u3010",paraId:22,tocIndex:4},{value:"contenthash",paraId:22,tocIndex:4},{value:"\u3011\uFF1A\u6BCF\u4E2A\u6587\u4EF6\u81EA\u5DF1\u5355\u72EC\u7684",paraId:22,tocIndex:4},{value:"hash",paraId:22,tocIndex:4},{value:"\u503C\uFF0C",paraId:22,tocIndex:4},{value:"\u6587\u4EF6\u7684\u6539\u52A8",paraId:22,tocIndex:4},{value:"\u53EA\u4F1A\u5F71\u54CD\u81EA\u8EAB\u7684",paraId:22,tocIndex:4},{value:"hash",paraId:22,tocIndex:4},{value:"\u503C\u3002",paraId:22,tocIndex:4},{value:"hash",paraId:23,tocIndex:4},{value:"\u662F\u5728\u8F93\u51FA\u6587\u4EF6\u65F6\u914D\u7F6E\u7684\uFF0C\u683C\u5F0F\u662F",paraId:23,tocIndex:4},{value:'filename: "[name].[xx:8][ext]"',paraId:23,tocIndex:4},{value:"\uFF0C",paraId:23,tocIndex:4},{value:"[xx]",paraId:23,tocIndex:4},{value:" \u683C\u5F0F\u662F",paraId:23,tocIndex:4},{value:"webpack",paraId:23,tocIndex:4},{value:"\u63D0\u4F9B\u7684\u5360\u4F4D\u7B26\uFF0C ",paraId:23,tocIndex:4},{value:":8",paraId:23,tocIndex:4},{value:" \u662F\u751F\u6210",paraId:23,tocIndex:4},{value:"hash",paraId:23,tocIndex:4},{value:"\u7684\u957F\u5EA6\u3002",paraId:23,tocIndex:4},{value:"ext",paraId:24,tocIndex:4},{value:": \u6587\u4EF6\u540E\u7F00\u540D",paraId:24,tocIndex:4},{value:"name",paraId:24,tocIndex:4},{value:": \u6587\u4EF6\u540D",paraId:24,tocIndex:4},{value:"path",paraId:24,tocIndex:4},{value:": \u6587\u4EF6\u76F8\u5BF9\u8DEF\u5F84",paraId:24,tocIndex:4},{value:"folder",paraId:24,tocIndex:4},{value:": \u6587\u4EF6\u6240\u5728\u6587\u4EF6\u5939",paraId:24,tocIndex:4},{value:"hash",paraId:24,tocIndex:4},{value:": \u6BCF\u6B21\u6784\u5EFA\u751F\u6210\u7684\u552F\u4E00 ",paraId:24,tocIndex:4},{value:"hash",paraId:24,tocIndex:4},{value:" \u503C",paraId:24,tocIndex:4},{value:"chunkhash",paraId:24,tocIndex:4},{value:": \u6839\u636E ",paraId:24,tocIndex:4},{value:"chunk",paraId:24,tocIndex:4},{value:" \u751F\u6210 ",paraId:24,tocIndex:4},{value:"hash",paraId:24,tocIndex:4},{value:"\u503C",paraId:24,tocIndex:4},{value:"contenthash",paraId:24,tocIndex:4},{value:": \u6839\u636E\u6587\u4EF6\u5185\u5BB9\u751F\u6210 ",paraId:24,tocIndex:4},{value:"hash",paraId:24,tocIndex:4},{value:" \u503C",paraId:24,tocIndex:4},{value:"\u6211\u4EEC\u5728\u751F\u4EA7\u73AF\u5883\u91CC\u4F1A\u628A",paraId:25,tocIndex:4},{value:"js",paraId:25,tocIndex:4},{value:"\u4E2D\u4E00\u4E9B\u516C\u5171\u5E93\u548C\u7A0B\u5E8F\u5165\u53E3\u6587\u4EF6\u533A\u5206\u5F00\uFF0C\u5355\u72EC\u6253\u5305\u6784\u5EFA\uFF0C\u91C7\u7528",paraId:25,tocIndex:4},{value:"chunkhash",paraId:25,tocIndex:4},{value:"\u7684\u65B9\u5F0F\u751F\u6210\u54C8\u5E0C\u503C\uFF0C\u53EA\u8981\u6211\u4EEC\u4E0D\u6539\u52A8\u516C\u5171\u5E93\u7684\u4EE3\u7801\uFF0C\u5C31\u53EF\u4EE5\u4FDD\u8BC1\u5176\u54C8\u5E0C\u503C\u4E0D\u53D8\uFF0C\u53EF\u4EE5\u7EE7\u7EED\u4F7F\u7528\u6D4F\u89C8\u5668\u7F13\u5B58\uFF0C\u6240\u4EE5",paraId:25,tocIndex:4},{value:"js",paraId:25,tocIndex:4},{value:"\u9002\u5408\u4F7F\u7528",paraId:25,tocIndex:4},{value:"chunkhash",paraId:25,tocIndex:4},{value:"\u3002",paraId:25,tocIndex:4},{value:"css",paraId:26,tocIndex:4},{value:"\u548C\u56FE\u7247\u8D44\u6E90\uFF0C\u5A92\u4F53\u8D44\u6E90\u4E00\u822C\u90FD\u662F\u5355\u72EC\u5B58\u5728\u7684\uFF0C\u53EF\u4EE5\u91C7\u7528",paraId:26,tocIndex:4},{value:"contenthash",paraId:26,tocIndex:4},{value:"\uFF0C\u53EA\u6709\u6587\u4EF6\u672C\u8EAB\u53D8\u5316\u540E\u4F1A\u751F\u6210\u65B0",paraId:26,tocIndex:4},{value:"contenthash",paraId:26,tocIndex:4},{value:"\u503C\u3002",paraId:26,tocIndex:4},{value:"\u4FEE\u6539 ",paraId:27,tocIndex:4},{value:"webpack.common.js",paraId:27,tocIndex:4},{value:"\uFF0C\u628A",paraId:27,tocIndex:4},{value:"js",paraId:27,tocIndex:4},{value:"\u8F93\u51FA\u7684\u6587\u4EF6\u540D\u79F0\u683C\u5F0F\u52A0\u4E0A",paraId:27,tocIndex:4},{value:"chunkhash",paraId:27,tocIndex:4},{value:"\uFF0C\u628A",paraId:27,tocIndex:4},{value:"css",paraId:27,tocIndex:4},{value:"\u548C\u56FE\u7247\u8D44\u6E90\uFF0C\u5A92\u4F53\u8D44\u6E90\u8F93\u51FA\u683C\u5F0F\u52A0\u4E0A",paraId:27,tocIndex:4},{value:"contenthash",paraId:27,tocIndex:4},{value:"\u3002",paraId:27,tocIndex:4},{value:`// webpack.common.js
 // ...
@@ -2350,41 +2350,41 @@ const generatorPlugin = configs => {
       // \u62BD\u79BBcss\u63D2\u4EF6
       new MiniCssExtractPlugin({
         filename: 'static/css/[name].[contenthash:8].css' // \u62BD\u79BBcss\u7684\u8F93\u51FA\u76EE\u5F55\u548C\u540D\u79F0
-      })\uFF0C
+      }),
     })
   }
 }
 const commonConfig = {
   // \u6253\u5305\u6587\u4EF6\u51FA\u53E3
   output: {
-    filename: 'static/js/[name].[chunkhash:8].js'\uFF0C // // \u52A0\u4E0A[chunkhash:8]
+    filename: 'static/js/[name].[chunkhash:8].js', // // \u52A0\u4E0A[chunkhash:8]
     // ...
-  }\uFF0C
+  },
   module: {
     rules: [
       {
-        test:/.(png|jpg|jpeg|gif|svg)$/\uFF0C // \u5339\u914D\u56FE\u7247\u6587\u4EF6
+        test:/.(png|jpg|jpeg|gif|svg)$/, // \u5339\u914D\u56FE\u7247\u6587\u4EF6
         // ...
         generator:{
           filename:'static/images/[name].[contenthash:8][ext]' // \u52A0\u4E0A[contenthash:8]
-        }\uFF0C
-      }\uFF0C
+        },
+      },
       {
-        test:/.(woff2?|eot|ttf|otf)$/\uFF0C // \u5339\u914D\u5B57\u4F53\u6587\u4EF6
+        test:/.(woff2?|eot|ttf|otf)$/, // \u5339\u914D\u5B57\u4F53\u6587\u4EF6
         // ...
         generator:{
-          filename:'static/fonts/[name].[contenthash:8][ext]'\uFF0C // \u52A0\u4E0A[contenthash:8]
-        }\uFF0C
-      }\uFF0C
+          filename:'static/fonts/[name].[contenthash:8][ext]', // \u52A0\u4E0A[contenthash:8]
+        },
+      },
       {
-        test:/.(mp4|webm|ogg|mp3|wav|flac|aac)$/\uFF0C // \u5339\u914D\u5A92\u4F53\u6587\u4EF6
+        test:/.(mp4|webm|ogg|mp3|wav|flac|aac)$/, // \u5339\u914D\u5A92\u4F53\u6587\u4EF6
         // ...
         generator:{
-          filename:'static/media/[name].[contenthash:8][ext]'\uFF0C // \u52A0\u4E0A[contenthash:8]
-        }\uFF0C
-      }\uFF0C
+          filename:'static/media/[name].[contenthash:8][ext]', // \u52A0\u4E0A[contenthash:8]
+        },
+      },
     ]
-  }\uFF0C
+  },
   // ...
 }
 `,paraId:28,tocIndex:4},{value:"\u518D\u6B21\u6253\u5305\u5C31\u53EF\u4EE5\u770B\u5230\u6587\u4EF6\u540E\u9762\u7684",paraId:29,tocIndex:4},{value:"hash",paraId:29,tocIndex:4},{value:"\u4E86\u3002",paraId:29,tocIndex:4},{value:"\u4EE3\u7801\u5206\u5272\u901A\u8FC7",paraId:30,tocIndex:5},{value:"splitChunks",paraId:30,tocIndex:5},{value:"\u914D\u7F6E\uFF08\u6709\u9ED8\u8BA4\u914D\u7F6E\uFF09\uFF0C(\u6309\u9700\u52A0\u8F7D\u6216\u662F\u5E76\u884C\u52A0\u8F7D)",paraId:30,tocIndex:5},{value:"\u3010\u7B2C\u4E00\u79CD\u3011\uFF1A\uFF08\u9632\u6B62\u91CD\u590D\uFF0C\u4F7F\u7528",paraId:31,tocIndex:5},{value:"splitChunksPlugin",paraId:31,tocIndex:5},{value:"\u53BB\u91CD\u548C\u5206\u79BB",paraId:31,tocIndex:5},{value:"chunk",paraId:31,tocIndex:5},{value:"\uFF09",paraId:31,tocIndex:5},{value:"\u540C\u6B65\u4EE3\u7801\u5206\u5272",paraId:31,tocIndex:5},{value:"\uFF0C\u914D\u7F6E\u4EE5\u4E0B\u914D\u7F6E\uFF0C\u4F1A\u5206\u6790\u5C06\u4EE3\u7801\u4E2D\u8BE5\u63D0\u51FA\u7684\u5185\u5BB9\u63D0\u51FA\u5230\u4E00\u4E2A\u6587\u4EF6\u5355\u72EC\u5B58\u653E\u3002",paraId:31,tocIndex:5},{value:"\u3010\u7B2C\u4E8C\u79CD\u3011: \uFF08\u52A8\u6001\u5BFC\u5165\uFF09",paraId:31,tocIndex:5},{value:"\u5F02\u6B65\u4EE3\u7801\u5206\u5272",paraId:31,tocIndex:5},{value:"\uFF0C\u4F7F\u7528",paraId:31,tocIndex:5},{value:"splitChunks",paraId:31,tocIndex:5},{value:"\u9ED8\u8BA4\u914D\u7F6E\uFF0C\u5982\u901A\u8FC7",paraId:31,tocIndex:5},{value:"import().then()",paraId:31,tocIndex:5},{value:"; \u5F02\u6B65\u52A0\u8F7D\u7684\u5E93\u4E5F\u4F1A\u653E\u5165\u5230\u5355\u72EC\u4E00\u4E2A\u6587\u4EF6\u4E2D\u3002",paraId:31,tocIndex:5},{value:"\u3010\u7B2C\u4E09\u79CD\u3011\uFF1A\uFF08\u5165\u53E3\u8D77\u70B9\uFF09",paraId:31,tocIndex:5},{value:"\u4F7F\u7528",paraId:31,tocIndex:5},{value:"entry",paraId:31,tocIndex:5},{value:"\u914D\u7F6E",paraId:31,tocIndex:5},{value:"\u624B\u52A8\u5730\u5206\u79BB\u4EE3\u7801",paraId:31,tocIndex:5},{value:"\u3002",paraId:31,tocIndex:5},{value:"\u5728\u5B9E\u9645\u9879\u76EE\u4E2D\uFF0C\u4EE3\u7801\u5206\u5272\u53EF\u4EE5\u53C2\u8003\u5982\u4E0B\u5206\u79BB\u539F\u5219\uFF1A",paraId:32,tocIndex:5},{value:"\u4E1A\u52A1\u4EE3\u7801\u548C\u7B2C\u4E09\u65B9\u4F9D\u8D56\u5206\u79BB\u3002",paraId:33,tocIndex:5},{value:"\u4E1A\u52A1\u4EE3\u7801\uFF0C\u4E1A\u52A1\u516C\u5171\u4EE3\u7801\u548C\u7B2C\u4E09\u65B9\u4F9D\u8D56\u5206\u79BB\u3002",paraId:33,tocIndex:5},{value:"\u9996\u6B21\u52A0\u8F7D\u548C\u8BBF\u95EE\u540E\u52A0\u8F7D\u7684\u4EE3\u7801\u5206\u79BB\u3002",paraId:33,tocIndex:5},{value:"\u56E0\u4E3A\u7B2C\u4E09\u65B9\u5305\u6539\u53D8\u7684\u51E0\u7387\u6BD4\u8F83\u5C0F\uFF0C\u6240\u4EE5\u53EF\u4EE5\u5355\u72EC\u628A",paraId:34,tocIndex:5},{value:"node_modules",paraId:34,tocIndex:5},{value:"\u4E2D\u7684\u4EE3\u7801\u5355\u72EC\u6253\u5305\uFF0C\u6709\u6548\u5229\u7528\u6D4F\u89C8\u5668\u7F13\u5B58\u3002\u4E5F\u53EF\u4EE5\u628A\u516C\u5171\u6A21\u5757\u63D0\u53D6\u51FA\u6765\uFF0C\u907F\u514D\u91CD\u590D\u6253\u5305\u52A0\u5927\u4EE3\u7801\u4F53\u79EF\u3002",paraId:34,tocIndex:5},{value:`// webpack.prod.js
@@ -2396,19 +2396,19 @@ const prodConfig = {
        * all: \u652F\u6301\u540C\u6B65\u548C\u5F02\u6B65\u7684\u4EE3\u7801\u5206\u5272\u3002async\uFF1A\u53EA\u652F\u6301\u5F02\u6B65\u4EE3\u7801\u5206\u5272\u3002 initial: \u53EA\u652F\u6301\u540C\u6B65\u4EE3\u7801\u5206\u5272\uFF0C\u540C\u6B65\u4EE3\u7801\u5206\u5272\u8FD8\u8981\u8BBE\u7F6EcacheGroups.vendors\uFF0C\u5C06\u6253\u5305\u6587\u4EF6\u653E\u5165vendors\u7EC4\u91CC\u9762
        * \u53EF\u4EE5\u53EA\u8BBE\u7F6E\u8BE5\u9879\uFF0C\u5176\u4ED6\u7528\u9ED8\u8BA4\u8BBE\u7F6E
        */
-      chunks: 'all'\uFF0C // \u9ED8\u8BA4async
-      minSize: 30000\uFF0C // \u5F53\u6587\u4EF6\uFF0C\u5E93\u6216\u662F\u6A21\u5757\u5927\u5C0F\u5927\u4E8E30000kb \u624D\u505A\u4EE3\u7801\u5206\u5272
-      maxSize: 1000000\uFF0C // \u5BF9\u5927\u7684\u6587\u4EF6\u8FDB\u884C\u518D\u4E00\u6B21\u5206\u5272\uFF08\u4E00\u822C\u4E0D\u914D\u7F6E\uFF09
+      chunks: 'all', // \u9ED8\u8BA4async
+      minSize: 30000, // \u5F53\u6587\u4EF6\uFF0C\u5E93\u6216\u662F\u6A21\u5757\u5927\u5C0F\u5927\u4E8E30000kb \u624D\u505A\u4EE3\u7801\u5206\u5272
+      maxSize: 1000000, // \u5BF9\u5927\u7684\u6587\u4EF6\u8FDB\u884C\u518D\u4E00\u6B21\u5206\u5272\uFF08\u4E00\u822C\u4E0D\u914D\u7F6E\uFF09
       /**
        * \u4EE5lodash.js \u4E3A\u4F8B
        * webpack\u6253\u5305\u540E\u5728\u751F\u6210\u5F88\u591Achunk\u6587\u4EF6\uFF08js\u6587\u4EF6\uFF09\uFF0C\u5982\u679C\u6709n\u4E2A\u4EE5\u4E0A\u7684\u6587\u4EF6\u9700\u8981\u4F9D\u8D56lodash.js\uFF0C\u90A3\u4E48lodash\u5C31\u9700\u8981\u4EE3\u7801\u5206\u5272\uFF0C\u751F\u6210\u5355\u72EC\u6587\u4EF6\uFF0C
        * \u5982\u679C\u8FD9\u4E48\u591Achunk\u6587\u4EF6\u91CC\u9762\u53EA\u6709\u4E00\u4E2A\u9700\u8981\u4F9D\u8D56lodash.js\uFF0C \u5219\u8BE5\u6587\u4EF6\u4E0D\u505A\u4EE3\u7801\u5206\u5272
        */
-      minChunks: 1\uFF0C // \u5305\u88AB\u5F15\u7528\u51E0\u6B21\u4EE5\u4E0A\u624D\u4F1A\u88AB\u5206\u5272
-      maxAsyncRequests: 5\uFF0C // \u540C\u65F6\u52A0\u8F7D\u7684\u6A21\u5757\u6570\u662F5\u4E2A\uFF0C \u5728\u6253\u5305\u524D5\u4E2A\u5E93\u7684\u65F6\u5019\u4F1A\u751F\u62105\u4E2A\u6587\u4EF6\uFF0C\u5982\u679C\u662F\u64CD\u8FC75\u4E2A\uFF0C\u5219\u4E0D\u4F1A\u5728\u505A\u4EE3\u7801\u5206\u5272
-      maxInitialRequests: 3\uFF0C // \u6574\u4E2A\u7F51\u7AD9\u9996\u9875\u542F\u52A8\uFF0C\u5165\u53E3\u6587\u4EF6\u52A0\u8F7D\u65F6\u5F15\u5165\u7684\u5E93\u6700\u591A\u5206\u5272\u51FA3\u4E2A\u6587\u4EF6\uFF0C\u5982\u679C\u8D85\u8FC73\u4E2A\u5C31\u4E0D\u4F1A\u505A\u4EE3\u7801\u5206\u5272
-      automaticNameDelimiter: '~'\uFF0C // \u5206\u5272\u6587\u4EF6\u751F\u6210\u65F6\uFF0C\u6587\u4EF6\u540D\u4E2D\u7EC4\u548C\u5165\u53E3\u6587\u4EF6\u7684\u8FDE\u63A5\u7B26
-      // name: true\uFF0C // \u6253\u5305\u751F\u6210\u7684\u6587\u4EF6\u540D\u7528cacheGroups\u7684\u8BBE\u7F6E
+      minChunks: 1, // \u5305\u88AB\u5F15\u7528\u51E0\u6B21\u4EE5\u4E0A\u624D\u4F1A\u88AB\u5206\u5272
+      maxAsyncRequests: 5, // \u540C\u65F6\u52A0\u8F7D\u7684\u6A21\u5757\u6570\u662F5\u4E2A\uFF0C \u5728\u6253\u5305\u524D5\u4E2A\u5E93\u7684\u65F6\u5019\u4F1A\u751F\u62105\u4E2A\u6587\u4EF6\uFF0C\u5982\u679C\u662F\u64CD\u8FC75\u4E2A\uFF0C\u5219\u4E0D\u4F1A\u5728\u505A\u4EE3\u7801\u5206\u5272
+      maxInitialRequests: 3, // \u6574\u4E2A\u7F51\u7AD9\u9996\u9875\u542F\u52A8\uFF0C\u5165\u53E3\u6587\u4EF6\u52A0\u8F7D\u65F6\u5F15\u5165\u7684\u5E93\u6700\u591A\u5206\u5272\u51FA3\u4E2A\u6587\u4EF6\uFF0C\u5982\u679C\u8D85\u8FC73\u4E2A\u5C31\u4E0D\u4F1A\u505A\u4EE3\u7801\u5206\u5272
+      automaticNameDelimiter: '~', // \u5206\u5272\u6587\u4EF6\u751F\u6210\u65F6\uFF0C\u6587\u4EF6\u540D\u4E2D\u7EC4\u548C\u5165\u53E3\u6587\u4EF6\u7684\u8FDE\u63A5\u7B26
+      // name: true, // \u6253\u5305\u751F\u6210\u7684\u6587\u4EF6\u540D\u7528cacheGroups\u7684\u8BBE\u7F6E
       // \u540C\u6B65\u4EE3\u7801\u5206\u5272\u8981\u8D70cacheGroups\uFF08\u7F13\u5B58\u7EC4\uFF09\u5C06\u6240\u6709\u7B26\u5408\u4E0D\u540C\u7F13\u5B58\u7EC4\u7684\u6587\u4EF6\u6253\u5305\u5230\u4E0D\u540C\u7684\u6587\u4EF6\u91CC
       cacheGroups: {
         /**
@@ -2417,26 +2417,26 @@ const prodConfig = {
          * \u5982\u679C\u4E00\u4E2A\u6587\u4EF6\u7B26\u5408\u6240\u6709\u7EC4\u7684\u8BDD\uFF0C\u5219\u8BE5\u6587\u4EF6\u6253\u5305\u5230priority\u503C\u5927\u7684\u7EC4\u91CC\u9762
          */
         vendors: {
-          test: /[\\\\/]node_modules[\\\\/]/\uFF0C
-          priority: -10\uFF0C
-          name: 'vendors'\uFF0C // \u8BBE\u7F6E\u6253\u5305\u6587\u4EF6\u540D
-        }\uFF0C
+          test: /[\\\\/]node_modules[\\\\/]/,
+          priority: -10,
+          name: 'vendors', // \u8BBE\u7F6E\u6253\u5305\u6587\u4EF6\u540D
+        },
         /**
          * \u540C\u6B65\u4EE3\u7801\u5206\u5272\u4E0D\u5728node_modules \u5F15\u5165\u7684\u6587\u4EF6\u7684\u9ED8\u8BA4\u5206\u5272\u6587\u4EF6\u914D\u7F6E
          * default~main.js \u8868\u793A\u8BE5\u6587\u4EF6\u5C5E\u4E8Edefault\u8FD9\u7EC4\uFF0C\u5165\u53E3\u6587\u4EF6\u662Fmain.js
          */
         default: {
-          minChunks: 2\uFF0C // \u4F7F\u7528\u4E24\u6B21\u5C31\u63D0\u53D6\u51FA\u6765
-          priority: -20\uFF0C
-          chunks: 'initial'\uFF0C //  // \u53EA\u63D0\u53D6\u521D\u59CB\u5316\u5C31\u80FD\u83B7\u53D6\u5230\u7684\u6A21\u5757\uFF0C\u4E0D\u7BA1\u5F02\u6B65\u7684
+          minChunks: 2, // \u4F7F\u7528\u4E24\u6B21\u5C31\u63D0\u53D6\u51FA\u6765
+          priority: -20,
+          chunks: 'initial', //  // \u53EA\u63D0\u53D6\u521D\u59CB\u5316\u5C31\u80FD\u83B7\u53D6\u5230\u7684\u6A21\u5757\uFF0C\u4E0D\u7BA1\u5F02\u6B65\u7684
           // \u5982\u679C\u4E00\u4E2A\u6A21\u5757\u5DF2\u7ECF\u6253\u5305\u8FC7\u4E86\uFF0C\u5F53\u8BE5\u6A21\u5757\u88AB\u5176\u4ED6\u6A21\u5757\u5F15\u7528\uFF0C\u5176\u4ED6\u6A21\u5757\u6253\u5305\u65F6\u5C31\u4F1A\u5FFD\u7565\u8BE5\u6A21\u5757\uFF0C\u4E0D\u4F1A\u91CD\u590D\u6253\u5305\u4E86\uFF0C\u800C\u662F\u4F7F\u7528\u4E4B\u524D\u6253\u5305\u7684\u90A3\u4E2A\u6A21\u5757
-          // reuseExistingChunk: true\uFF0C
-          minSize: 0\uFF0C // \u63D0\u53D6\u4EE3\u7801\u4F53\u79EF\u5927\u4E8E0\u5C31\u63D0\u53D6\u51FA\u6765
-          name: 'common'\uFF0C
-        }\uFF0C
-      }\uFF0C
-    }\uFF0C
-  }\uFF0C
+          // reuseExistingChunk: true,
+          minSize: 0, // \u63D0\u53D6\u4EE3\u7801\u4F53\u79EF\u5927\u4E8E0\u5C31\u63D0\u53D6\u51FA\u6765
+          name: 'common',
+        },
+      },
+    },
+  },
 };
 `,paraId:35,tocIndex:5},{value:"tree shaking",paraId:36,tocIndex:6},{value:"(\u6447\u6811\u4F18\u5316)",paraId:36,tocIndex:6},{value:"\u5C06\u6A21\u5757\u4E2D\u5F15\u5165\u7684\u5185\u5BB9\u6253\u5305\uFF0C\u6CA1\u6709\u5F15\u5165\u7684\u7ED9\u5FFD\u7565\uFF0C\u6447\u6389\uFF08\u4E0D\u6253\u5305\u8FDB\u4EE3\u7801\uFF0C\u4F18\u5316\u6587\u4EF6\u5927\u5C0F\uFF09\u3002",paraId:37,tocIndex:6},{value:"\u53EA\u652F\u6301",paraId:37,tocIndex:6},{value:"es module",paraId:37,tocIndex:6},{value:"\u65B9\u5F0F\u7684\u5F15\u5165\uFF08\u9759\u6001\u5F15\u5165\u7684\u65B9\u5F0F\uFF09(\u4F9D\u8D56\u4E8E",paraId:37,tocIndex:6},{value:"ESModule",paraId:37,tocIndex:6},{value:"\u6A21\u5757\u7CFB\u7EDF\u7684\u9759\u6001\u7ED3\u6784\u7279\u6027\uFF0C\u5176\u4ED6\u6A21\u5757\u7CFB\u7EDF\u4E0D\u652F\u6301)\u3002",paraId:37,tocIndex:6},{value:"\u5728",paraId:37,tocIndex:6},{value:"mode\uFF1Adevelopment",paraId:37,tocIndex:6},{value:"\u6A21\u5F0F\u4E0B\u9700\u8981\u8BBE\u7F6E\u4EE5\u4E0B\u914D\u7F6E",paraId:37,tocIndex:6},{value:"usedExports: true",paraId:37,tocIndex:6},{value:"\uFF0C",paraId:37,tocIndex:6},{value:"production",paraId:37,tocIndex:6},{value:"\u6A21\u5F0F\u4E0B\u53EF\u4EE5\u4E0D\u914D\u7F6E\u3002",paraId:37,tocIndex:6},{value:"\u9488\u5BF9\u6A21\u5757\u4E2D\u9700\u8981\u5F15\u5165\u4F46\u662F\u6CA1\u6709\u5BFC\u51FA\u5185\u5BB9\u7684\u6A21\u5757\uFF08",paraId:37,tocIndex:6},{value:"import './style.less'",paraId:37,tocIndex:6},{value:"\uFF09\uFF0C",paraId:37,tocIndex:6},{value:"tree shaking",paraId:37,tocIndex:6},{value:"\u4F1A\u8BA4\u4E3A\u8BE5\u6A21\u5757\u6CA1\u6709\u5BFC\u51FA\uFF0C\u5F15\u7528\u5185\u5BB9\uFF0C\u81EA\u52A8\u5FFD\u7565\u6389\uFF0C\u56E0\u6B64\u6211\u4EEC\u9700\u8981\u5728 ",paraId:37,tocIndex:6},{value:"package.json",paraId:37,tocIndex:6},{value:" \u91CC\u9762\u914D\u7F6E ",paraId:37,tocIndex:6},{value:`"sideEffects": ['./*.less']`,paraId:37,tocIndex:6},{value:"\uFF0C\u4F7F\u8BE5\u6587\u4EF6\u4E0D\u4F7F\u7528",paraId:37,tocIndex:6},{value:"tree shaking",paraId:37,tocIndex:6},{value:"\u6253\u5305\uFF0C\u4EE5\u514D\u4EE3\u7801\u51FA\u73B0\u95EE\u9898\uFF0C\u6CA1\u6709\u5219\u8BBE\u7F6E\u4E3A",paraId:37,tocIndex:6},{value:"false",paraId:37,tocIndex:6},{value:"\u3002",paraId:37,tocIndex:6},{value:"development",paraId:37,tocIndex:6},{value:"\u6A21\u5F0F\u4E0B\uFF0C\u4E0D\u5F15\u7528\u7684\u4EE3\u7801\u4E5F\u4F1A\u6253\u5305\u5165\u6587\u4EF6\u4E2D\uFF0C\u662F\u56E0\u4E3A\u8981\u8C03\u8BD5\uFF0C\u5982\u679C\u5220\u9664\u4EE3\u7801\uFF0C\u5219",paraId:37,tocIndex:6},{value:"source map",paraId:37,tocIndex:6},{value:"\u5BF9\u5E94\u7684\u884C\u6570\u5C31\u4F1A\u4E0D\u6B63\u786E\u3002\u4F46\u662F\u6587\u4EF6\u4F1A\u6CE8\u660E\u4F7F\u7528\u4E86\u54EA\u4E9B\u5185\u5BB9\u3002",paraId:37,tocIndex:6},{value:"production",paraId:37,tocIndex:6},{value:"\u6A21\u5F0F\u4E0B\u4E0D\u5F15\u7528\u7684\u4EE3\u7801\u5C31\u4E0D\u4F1A\u6253\u5305\u5165\u6587\u4EF6\u3002",paraId:37,tocIndex:6},{value:"js",paraId:38,tocIndex:7},{value:"\u4E2D\u4F1A\u6709\u672A\u4F7F\u7528\u5230\u7684\u4EE3\u7801\uFF0C",paraId:38,tocIndex:7},{value:"css",paraId:38,tocIndex:7},{value:"\u4E2D\u4E5F\u4F1A\u6709\u672A\u88AB\u9875\u9762\u4F7F\u7528\u5230\u7684\u6837\u5F0F\uFF0C\u53EF\u4EE5\u901A\u8FC7",paraId:38,tocIndex:7},{value:"purgecss-webpack-plugin",paraId:38,tocIndex:7},{value:"\u63D2\u4EF6\u6253\u5305\u7684\u65F6\u5019\u79FB\u9664\u672A\u4F7F\u7528\u5230\u7684",paraId:38,tocIndex:7},{value:"css",paraId:38,tocIndex:7},{value:"\u6837\u5F0F\uFF0C\u8FD9\u4E2A\u63D2\u4EF6\u662F\u548C",paraId:38,tocIndex:7},{value:"mini-css-extract-plugin",paraId:38,tocIndex:7},{value:"\u63D2\u4EF6\u914D\u5408\u4F7F\u7528\u7684\uFF0C\u5728\u4E0A\u9762\u5DF2\u7ECF\u5B89\u88C5\u8FC7\uFF0C\u8FD8\u9700\u8981",paraId:38,tocIndex:7},{value:"glob-all",paraId:38,tocIndex:7},{value:"\u6765\u9009\u62E9\u8981\u68C0\u6D4B\u54EA\u4E9B\u6587\u4EF6\u91CC\u9762\u7684\u7C7B\u540D\u548C id \u8FD8\u6709\u6807\u7B7E\u540D\u79F0\u3002",paraId:38,tocIndex:7},{value:`yarn add purgecss-webpack-plugin glob-all -D
 `,paraId:39,tocIndex:7},{value:"\u4FEE\u6539 ",paraId:40,tocIndex:7},{value:"webpack.common.js",paraId:40,tocIndex:7},{value:`const globAll = require('glob-all')
@@ -2450,23 +2450,23 @@ const generatorPlugin = configs => {
         // \u62BD\u79BBcss\u63D2\u4EF6
         new MiniCssExtractPlugin({
           filename: 'static/css/[name].[contenthash:8].css' // \u62BD\u79BBcss\u7684\u8F93\u51FA\u76EE\u5F55\u548C\u540D\u79F0
-        })\uFF0C
+        }),
         // \u6E05\u7406\u65E0\u7528css
         new PurgeCSSPlugin({
           // \u68C0\u6D4Bsrc\u4E0B\u6240\u6709tsx\u6587\u4EF6\u548Cindex.html\u4E2D\u4F7F\u7528\u7684\u7C7B\u540D\u548Cid\u548C\u6807\u7B7E\u540D\u79F0
           // \u53EA\u6253\u5305\u8FD9\u4E9B\u6587\u4EF6\u4E2D\u7528\u5230\u7684\u6837\u5F0F
           paths: globAll.sync([
-          \`\${path.join(__dirname\uFF0C '../src')}/**/*.tsx\`\uFF0C
-              path.join(__dirname\uFF0C '../index.html')
-          ]\uFF0C {
+          \`\${path.join(__dirname, '../src')}/**/*.tsx\`,
+              path.join(__dirname, '../index.html')
+          ], {
           nodir: true
-        })\uFF0C
-        defaultExtractor: content => content.match(/[\\w-/:]+(?<!:)/g) || []\uFF0C
+        }),
+        defaultExtractor: content => content.match(/[\\w-/:]+(?<!:)/g) || [],
           // \u8BBE\u7F6E\u767D\u540D\u5355safelist
           afelist: {
-            standard: [/^ant-/] // \u8FC7\u6EE4\u4EE5ant-\u5F00\u5934\u7684\u7C7B\u540D\uFF0C\u54EA\u6015\u6CA1\u7528\u5230\u4E5F\u4E0D\u5220\u9664
+            standard: [/^ant-/] // \u8FC7\u6EE4\u4EE5ant-\u5F00\u5934\u7684\u7C7B\u540D,\u54EA\u6015\u6CA1\u7528\u5230\u4E5F\u4E0D\u5220\u9664
           }
-        })\uFF0C
+        }),
       );
   }
   return plugins;
@@ -2475,17 +2475,17 @@ const generatorPlugin = configs => {
 const About = () => import(/* webpackChunkName: "about" */ '@/pages/About');
 const routes = [
   {
-    path: '/'\uFF0C
-    name: 'Home'\uFF0C
-    component: Home\uFF0C
-  }\uFF0C
+    path: '/',
+    name: 'Home',
+    component: Home,
+  },
   {
-    path: '/about'\uFF0C
-    name: 'About'\uFF0C
-    component: About\uFF0C
-  }\uFF0C
+    path: '/about',
+    name: 'About',
+    component: About,
+  },
 ];
-`,paraId:46,tocIndex:9},{value:"\u8DEF\u7531\u61D2\u52A0\u8F7D",paraId:47,tocIndex:10},{value:"\u7684\u5B9E\u73B0\u539F\u7406\u662F\uFF0C",paraId:47,tocIndex:10},{value:"\u5C06\u4E0D\u540C\u7684\u8DEF\u7531\u5BF9\u5E94\u7684\u7EC4\u4EF6\u5206\u5272\u6210\u4E0D\u540C\u7684\u4EE3\u7801\u5757\uFF0C\u7136\u540E\u5F53\u8DEF\u7531\u88AB\u8BBF\u95EE\u7684\u65F6\u5019\u624D\u52A0\u8F7D\u5BF9\u5E94\u7684\u7EC4\u4EF6\u4EE3\u7801",paraId:47,tocIndex:10},{value:"\uFF0C\u8FD9\u6837\u5C31\u53EF\u4EE5\u5B9E\u73B0\u6309\u9700\u52A0\u8F7D\uFF0C\u51CF\u5C11\u5E94\u7528\u7684\u521D\u59CB\u52A0\u8F7D\u65F6\u95F4\u3002",paraId:47,tocIndex:10},{value:"\u8C03\u7528 import()",paraId:48,tocIndex:10},{value:" \u4E4B\u5904\uFF0C\u88AB\u4F5C\u4E3A\u5206\u79BB\u7684\u6A21\u5757\u8D77\u70B9\uFF0C\u610F\u601D\u662F\uFF0C\u88AB\u8BF7\u6C42\u7684\u6A21\u5757\u548C\u5B83\u5F15\u7528\u7684\u6240\u6709\u5B50\u6A21\u5757\uFF0C\u4F1A\u5206\u79BB\u5230\u4E00\u4E2A\u5355\u72EC\u7684 ",paraId:48,tocIndex:10},{value:"chunk",paraId:48,tocIndex:10},{value:" \u4E2D\u3002",paraId:48,tocIndex:10},{value:"webpackChunkName",paraId:49,tocIndex:10},{value:" \u4F5C\u7528\u662F ",paraId:49,tocIndex:10},{value:"webpack ",paraId:49,tocIndex:10},{value:"\u5728\u6253\u5305\u7684\u65F6\u5019\uFF0C\u5BF9\u5F02\u6B65\u5F15\u5165\u7684\u5E93\u4EE3\u7801\u8FDB\u884C\u4EE3\u7801\u5206\u5272\u65F6\uFF0C\u8BBE\u7F6E\u4EE3\u7801\u5757\u7684\u540D\u5B57\u3002",paraId:49,tocIndex:10},{value:"\u6709\u4E9B\u7EC4\u4EF6\u5E76\u4E0D\u662F\u4E00\u5F00\u59CB\u5C31\u9700\u8981\u6E32\u67D3\u7684",paraId:50,tocIndex:11},{value:"\uFF0C\u6BD4\u5982\u5F39\u7A97\uFF0C\u4E0B\u62C9\u83DC\u5355\u7B49\uFF0C\u8FD9\u4E9B\u7EC4\u4EF6",paraId:50,tocIndex:11},{value:"\u53EF\u4EE5\u7B49\u5230\u7528\u6237\u89E6\u53D1\u67D0\u4E2A\u4E8B\u4EF6\u7684\u65F6\u5019\u518D\u53BB\u52A0\u8F7D",paraId:50,tocIndex:11},{value:"\u3002\u6211\u4EEC\u53EF\u4EE5\u4F7F\u7528 ",paraId:50,tocIndex:11},{value:"React.lazy",paraId:50,tocIndex:11},{value:" \u51FD\u6570\u6765\u5B9E\u73B0\u3002",paraId:50,tocIndex:11},{value:`import React\uFF0C { Suspense } from 'react';
+`,paraId:46,tocIndex:9},{value:"\u8DEF\u7531\u61D2\u52A0\u8F7D",paraId:47,tocIndex:10},{value:"\u7684\u5B9E\u73B0\u539F\u7406\u662F\uFF0C",paraId:47,tocIndex:10},{value:"\u5C06\u4E0D\u540C\u7684\u8DEF\u7531\u5BF9\u5E94\u7684\u7EC4\u4EF6\u5206\u5272\u6210\u4E0D\u540C\u7684\u4EE3\u7801\u5757\uFF0C\u7136\u540E\u5F53\u8DEF\u7531\u88AB\u8BBF\u95EE\u7684\u65F6\u5019\u624D\u52A0\u8F7D\u5BF9\u5E94\u7684\u7EC4\u4EF6\u4EE3\u7801",paraId:47,tocIndex:10},{value:"\uFF0C\u8FD9\u6837\u5C31\u53EF\u4EE5\u5B9E\u73B0\u6309\u9700\u52A0\u8F7D\uFF0C\u51CF\u5C11\u5E94\u7528\u7684\u521D\u59CB\u52A0\u8F7D\u65F6\u95F4\u3002",paraId:47,tocIndex:10},{value:"\u8C03\u7528 import()",paraId:48,tocIndex:10},{value:" \u4E4B\u5904\uFF0C\u88AB\u4F5C\u4E3A\u5206\u79BB\u7684\u6A21\u5757\u8D77\u70B9\uFF0C\u610F\u601D\u662F\uFF0C\u88AB\u8BF7\u6C42\u7684\u6A21\u5757\u548C\u5B83\u5F15\u7528\u7684\u6240\u6709\u5B50\u6A21\u5757\uFF0C\u4F1A\u5206\u79BB\u5230\u4E00\u4E2A\u5355\u72EC\u7684 ",paraId:48,tocIndex:10},{value:"chunk",paraId:48,tocIndex:10},{value:" \u4E2D\u3002",paraId:48,tocIndex:10},{value:"webpackChunkName",paraId:49,tocIndex:10},{value:" \u4F5C\u7528\u662F ",paraId:49,tocIndex:10},{value:"webpack ",paraId:49,tocIndex:10},{value:"\u5728\u6253\u5305\u7684\u65F6\u5019\uFF0C\u5BF9\u5F02\u6B65\u5F15\u5165\u7684\u5E93\u4EE3\u7801\u8FDB\u884C\u4EE3\u7801\u5206\u5272\u65F6\uFF0C\u8BBE\u7F6E\u4EE3\u7801\u5757\u7684\u540D\u5B57\u3002",paraId:49,tocIndex:10},{value:"\u6709\u4E9B\u7EC4\u4EF6\u5E76\u4E0D\u662F\u4E00\u5F00\u59CB\u5C31\u9700\u8981\u6E32\u67D3\u7684",paraId:50,tocIndex:11},{value:"\uFF0C\u6BD4\u5982\u5F39\u7A97\uFF0C\u4E0B\u62C9\u83DC\u5355\u7B49\uFF0C\u8FD9\u4E9B\u7EC4\u4EF6",paraId:50,tocIndex:11},{value:"\u53EF\u4EE5\u7B49\u5230\u7528\u6237\u89E6\u53D1\u67D0\u4E2A\u4E8B\u4EF6\u7684\u65F6\u5019\u518D\u53BB\u52A0\u8F7D",paraId:50,tocIndex:11},{value:"\u3002\u6211\u4EEC\u53EF\u4EE5\u4F7F\u7528 ",paraId:50,tocIndex:11},{value:"React.lazy",paraId:50,tocIndex:11},{value:" \u51FD\u6570\u6765\u5B9E\u73B0\u3002",paraId:50,tocIndex:11},{value:`import React, { Suspense } from 'react';
 
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
@@ -2515,10 +2515,10 @@ const generatorPlugin = configs => {
     if (isProd) {
     plugins.push(
       new CompressionPlugin({
-        test: /.(js|css)$/\uFF0C // \u53EA\u751F\u6210css\uFF0Cjs\u538B\u7F29\u6587\u4EF6
-        filename: '[path][base].gz'\uFF0C // \u6587\u4EF6\u547D\u540D
-        algorithm: 'gzip'\uFF0C // \u538B\u7F29\u683C\u5F0F\uFF0C\u9ED8\u8BA4\u662Fgzip
-        threshold: 10240\uFF0C // \u53EA\u6709\u5927\u5C0F\u5927\u4E8E\u8BE5\u503C\u7684\u8D44\u6E90\u4F1A\u88AB\u5904\u7406\u3002\u9ED8\u8BA4\u503C\u662F 10k
+        test: /.(js|css)$/, // \u53EA\u751F\u6210css\uFF0Cjs\u538B\u7F29\u6587\u4EF6
+        filename: '[path][base].gz', // \u6587\u4EF6\u547D\u540D
+        algorithm: 'gzip', // \u538B\u7F29\u683C\u5F0F\uFF0C\u9ED8\u8BA4\u662Fgzip
+        threshold: 10240, // \u53EA\u6709\u5927\u5C0F\u5927\u4E8E\u8BE5\u503C\u7684\u8D44\u6E90\u4F1A\u88AB\u5904\u7406\u3002\u9ED8\u8BA4\u503C\u662F 10k
         minRatio: 0.8 // \u538B\u7F29\u7387\uFF0C\u9ED8\u8BA4\u503C\u662F 0.8
       })
     );
@@ -7595,48 +7595,48 @@ end_of_line = lf
 [**.md] # \u5339\u914Dmd\u6587\u4EF6
 trim_trailing_whitespace = false
 `,paraId:3,tocIndex:2},{value:"\u4E0A\u9762\u7684\u914D\u7F6E\u53EF\u4EE5\u89C4\u8303\u672C\u9879\u76EE\u4E2D\u6587\u4EF6\u7684\u7F29\u8FDB\u98CE\u683C\uFF0C\u548C\u7F29\u8FDB\u7A7A\u683C\u6570\u7B49\uFF0C\u4F1A\u8986\u76D6",paraId:4,tocIndex:2},{value:"vscode",paraId:4,tocIndex:2},{value:"\u7684\u914D\u7F6E\uFF0C\u6765\u8FBE\u5230\u4E0D\u540C\u7F16\u8F91\u5668\u4E2D\u4EE3\u7801\u9ED8\u8BA4\u884C\u4E3A\u4E00\u81F4\u7684\u4F5C\u7528\u3002",paraId:4,tocIndex:2},{value:"\u6BCF\u4E2A\u4EBA\u5199\u4EE3\u7801\u7684\u98CE\u683C\u4E60\u60EF\u4E0D\u4E00\u6837\uFF0C\u6BD4\u5982\u4EE3\u7801\u6362\u884C\uFF0C\u7ED3\u5C3E\u662F\u5426\u5E26\u5206\u53F7\uFF0C\u5355\u53CC\u5F15\u53F7\uFF0C\u7F29\u8FDB\u7B49\uFF0C\u6240\u4EE5\u9700\u8981",paraId:5,tocIndex:3},{value:"prettier",paraId:5,tocIndex:3},{value:"\u6765\u5E2E\u6211\u4EEC\u81EA\u52A8\u683C\u5F0F\u5316\u4EE3\u7801\u3002",paraId:5,tocIndex:3},{value:"\u6253\u5F00",paraId:6,tocIndex:4},{value:"vsocde",paraId:6,tocIndex:4},{value:"\u63D2\u4EF6\u5546\u5E97\uFF0C\u641C",paraId:6,tocIndex:4},{value:"Prettier - Code formatter",paraId:6,tocIndex:4},{value:"\uFF0C\u7136\u540E\u8FDB\u884C\u5B89\u88C5\u3002",paraId:6,tocIndex:4},{value:"\u5B89\u88C5\u63D2\u4EF6\u540E\uFF0C\u5728\u6839\u76EE\u5F55\u65B0\u589E ",paraId:7,tocIndex:5},{value:".prettierrc.js",paraId:7,tocIndex:5},{value:" \u914D\u7F6E\u6587\u4EF6\uFF0C\u914D\u7F6E\u5185\u5BB9\u5982\u4E0B\uFF1A",paraId:7,tocIndex:5},{value:`module.exports = {
-  printWidth: 100\uFF0C // \u4E00\u884C\u7684\u5B57\u7B26\u6570\uFF0C\u5982\u679C\u8D85\u8FC7\u4F1A\u8FDB\u884C\u6362\u884C
-  tabWidth: 2\uFF0C // \u4E00\u4E2Atab\u4EE3\u8868\u51E0\u4E2A\u7A7A\u683C\u6570\uFF0C\u9ED8\u8BA4\u5C31\u662F2
-  useTabs: false\uFF0C // \u662F\u5426\u542F\u7528tab\u53D6\u4EE3\u7A7A\u683C\u7B26\u7F29\u8FDB\uFF0C.editorconfig\u8BBE\u7F6E\u7A7A\u683C\u7F29\u8FDB\uFF0C\u6240\u4EE5\u8BBE\u7F6E\u4E3Afalse
-  singleQuote: true\uFF0C // \u5B57\u7B26\u4E32\u662F\u5426\u4F7F\u7528\u5355\u5F15\u53F7
-  trailingComma: 'none'\uFF0C // \u5BF9\u8C61\u6216\u6570\u7EC4\u672B\u5C3E\u662F\u5426\u6DFB\u52A0\u9017\u53F7 none| es5| all
-  jsxSingleQuote: true\uFF0C // \u5728jsx\u91CC\u662F\u5426\u4F7F\u7528\u5355\u5F15\u53F7\uFF0C\u4F60\u770B\u7740\u529E
-  bracketSpacing: true\uFF0C // \u5BF9\u8C61\u5927\u62EC\u53F7\u76F4\u63A5\u662F\u5426\u6709\u7A7A\u683C\uFF0C\u9ED8\u8BA4\u4E3Atrue\uFF0C\u6548\u679C\uFF1A{ foo: bar }
+  printWidth: 100, // \u4E00\u884C\u7684\u5B57\u7B26\u6570\uFF0C\u5982\u679C\u8D85\u8FC7\u4F1A\u8FDB\u884C\u6362\u884C
+  tabWidth: 2, // \u4E00\u4E2Atab\u4EE3\u8868\u51E0\u4E2A\u7A7A\u683C\u6570\uFF0C\u9ED8\u8BA4\u5C31\u662F2
+  useTabs: false, // \u662F\u5426\u542F\u7528tab\u53D6\u4EE3\u7A7A\u683C\u7B26\u7F29\u8FDB\uFF0C.editorconfig\u8BBE\u7F6E\u7A7A\u683C\u7F29\u8FDB\uFF0C\u6240\u4EE5\u8BBE\u7F6E\u4E3Afalse
+  singleQuote: true, // \u5B57\u7B26\u4E32\u662F\u5426\u4F7F\u7528\u5355\u5F15\u53F7
+  trailingComma: 'none', // \u5BF9\u8C61\u6216\u6570\u7EC4\u672B\u5C3E\u662F\u5426\u6DFB\u52A0\u9017\u53F7 none| es5| all
+  jsxSingleQuote: true, // \u5728jsx\u91CC\u662F\u5426\u4F7F\u7528\u5355\u5F15\u53F7\uFF0C\u4F60\u770B\u7740\u529E
+  bracketSpacing: true, // \u5BF9\u8C61\u5927\u62EC\u53F7\u76F4\u63A5\u662F\u5426\u6709\u7A7A\u683C\uFF0C\u9ED8\u8BA4\u4E3Atrue\uFF0C\u6548\u679C\uFF1A{ foo: bar }
   arrowParens: 'avoid' // \u7BAD\u5934\u51FD\u6570\u5982\u679C\u53EA\u6709\u4E00\u4E2A\u53C2\u6570\u5219\u7701\u7565\u62EC\u53F7
 };
 `,paraId:8,tocIndex:5},{value:"\u914D\u7F6E\u524D\u4E24\u6B65\u540E\uFF0C\u867D\u7136\u5DF2\u7ECF\u914D\u7F6E",paraId:9,tocIndex:6},{value:"prettier",paraId:9,tocIndex:6},{value:"\u683C\u5F0F\u5316\u89C4\u5219\uFF0C\u4F46\u8FD8\u9700\u8981\u8BA9",paraId:9,tocIndex:6},{value:"vscode",paraId:9,tocIndex:6},{value:"\u6765\u652F\u6301\u4FDD\u5B58\u540E\u89E6\u53D1\u683C\u5F0F\u5316\u3002",paraId:9,tocIndex:6},{value:"\u5728\u9879\u76EE\u6839\u76EE\u5F55\u65B0\u5EFA ",paraId:10,tocIndex:6},{value:".vscode",paraId:10,tocIndex:6},{value:" \u6587\u4EF6\u5939\uFF0C\u5185\u90E8\u65B0\u5EFA ",paraId:10,tocIndex:6},{value:"settings.json",paraId:10,tocIndex:6},{value:" \u6587\u4EF6\u914D\u7F6E\u6587\u4EF6\uFF0C\u5185\u5BB9\u5982\u4E0B\uFF1A",paraId:10,tocIndex:6},{value:`{
   "search.exclude": {
-   "/node_modules": true\uFF0C
-   "dist": true\uFF0C
-  }\uFF0C
-  "editor.formatOnSave": true\uFF0C
+   "/node_modules": true,
+   "dist": true,
+  },
+  "editor.formatOnSave": true,
   "[javascript]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
   "[javascriptreact]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
   "[typescript]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
   "[typescriptreact]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
   "[json]": {
    "editor.defaultFormatter": "vscode.json-language-features"
-  }\uFF0C
+  },
   "[html]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
   "[markdown]": {
    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
   "[css]": {
  \xA0 \xA0"editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
  \xA0"[less]": {
  \xA0 \xA0"editor.defaultFormatter": "esbenp.prettier-vscode"
-  }\uFF0C
+  },
  \xA0"[scss]": {
  \xA0 \xA0"editor.defaultFormatter": "esbenp.prettier-vscode"
   }
@@ -7646,51 +7646,51 @@ trim_trailing_whitespace = false
 `,paraId:14,tocIndex:9},{value:"\u5B89\u88C5",paraId:15,tocIndex:10},{value:"eslint",paraId:15,tocIndex:10},{value:"\u540E\uFF0C\u6267\u884C",paraId:15,tocIndex:10},{value:"npm init @eslint/config",paraId:15,tocIndex:10},{value:"\uFF0C\u9009\u62E9\u81EA\u5DF1\u9700\u8981\u7684\u914D\u7F6E",paraId:15,tocIndex:10},{value:"\u8FD9\u91CC\u6211\u4EEC\u9009\u62E9\u4E86",paraId:16,tocIndex:10},{value:"\u4F7F\u7528",paraId:17,tocIndex:10},{value:"eslint",paraId:17,tocIndex:10},{value:"\u68C0\u6D4B\u95EE\u9898\u3002",paraId:17,tocIndex:10},{value:"\u9879\u76EE\u4F7F\u7528\u7684\u6A21\u5757\u89C4\u8303\u662F",paraId:17,tocIndex:10},{value:"es module",paraId:17,tocIndex:10},{value:"\u3002",paraId:17,tocIndex:10},{value:"\u4F7F\u7528\u7684\u6846\u67B6\u662F",paraId:17,tocIndex:10},{value:"react",paraId:17,tocIndex:10},{value:"\u3002",paraId:17,tocIndex:10},{value:"\u4F7F\u7528\u4E86",paraId:17,tocIndex:10},{value:"typescript",paraId:17,tocIndex:10},{value:"\u3002",paraId:17,tocIndex:10},{value:"\u4EE3\u7801\u9009\u62E9\u8FD0\u884C\u5728\u6D4F\u89C8\u5668\u7AEF\u3002",paraId:17,tocIndex:10},{value:"eslint",paraId:17,tocIndex:10},{value:"\u914D\u7F6E\u6587\u4EF6\u4F7F\u7528",paraId:17,tocIndex:10},{value:"js",paraId:17,tocIndex:10},{value:"\u683C\u5F0F\u3002",paraId:17,tocIndex:10},{value:"\u662F\u5426\u73B0\u5728\u5B89\u88C5\u76F8\u5173\u4F9D\u8D56\uFF0C\u9009\u62E9\u662F\u3002",paraId:17,tocIndex:10},{value:"\u4F7F\u7528",paraId:17,tocIndex:10},{value:"yarn",paraId:17,tocIndex:10},{value:"\u5305\u7BA1\u7406\u5668\u5B89\u88C5\u4F9D\u8D56\u3002",paraId:17,tocIndex:10},{value:"\u9009\u62E9\u5B8C\u6210\u540E\u4F1A\u5728\u6839\u76EE\u5F55\u4E0B\u751F\u6210 ",paraId:18,tocIndex:10},{value:".eslint.js",paraId:18,tocIndex:10},{value:" \u6587\u4EF6\u3002",paraId:18,tocIndex:10},{value:"react 18",paraId:19,tocIndex:10},{value:"\u4F7F\u7528",paraId:19,tocIndex:10},{value:"jsx",paraId:19,tocIndex:10},{value:"\u8BED\u6CD5\u53EF\u4EE5\u4E0D\u518D\u5F15\u5165",paraId:19,tocIndex:10},{value:"React",paraId:19,tocIndex:10},{value:"\uFF0C\u4F46\u662F\u4E0D\u5F15\u5165",paraId:19,tocIndex:10},{value:"eslint",paraId:19,tocIndex:10},{value:"\u4ECD\u7136\u4F1A\u62A5\u9519\uFF0C\u6240\u4EE5\u5728",paraId:19,tocIndex:10},{value:"eslint",paraId:19,tocIndex:10},{value:"\u914D\u7F6E\u6587\u4EF6 ",paraId:19,tocIndex:10},{value:".eslint.js",paraId:19,tocIndex:10},{value:" \u7684",paraId:19,tocIndex:10},{value:"extends",paraId:19,tocIndex:10},{value:"\u5B57\u6BB5\u6DFB\u52A0\u63D2\u4EF6",paraId:19,tocIndex:10},{value:"plugin:react/jsx-runtime",paraId:19,tocIndex:10},{value:"\u3002",paraId:19,tocIndex:10},{value:".eslintrc.js",paraId:20,tocIndex:10},{value:" \u6587\u4EF6\u4E5F\u6709\u7EA2\u8272\u62A5\u9519\uFF0C\u62A5\u9519\u662F",paraId:20,tocIndex:10},{value:"'module' is not defined",paraId:20,tocIndex:10},{value:"\u3002",paraId:20,tocIndex:10},{value:"\u8FD9\u4E2A\u662F\u56E0\u4E3A\u4E0A\u9762\u9009\u62E9\u7684\u6D4F\u89C8\u5668\u73AF\u5883\uFF0C\u914D\u7F6E\u6587\u4EF6\u7684",paraId:21,tocIndex:10},{value:"module.exports",paraId:21,tocIndex:10},{value:"\u9700\u8981",paraId:21,tocIndex:10},{value:"node",paraId:21,tocIndex:10},{value:"\u73AF\u5883\uFF0C\u9700\u8981\u5728",paraId:21,tocIndex:10},{value:"eslint",paraId:21,tocIndex:10},{value:"\u7684",paraId:21,tocIndex:10},{value:"env",paraId:21,tocIndex:10},{value:"\u73AF\u5883\u914D\u7F6E\u4E2D\u6DFB\u52A0\u652F\u6301",paraId:21,tocIndex:10},{value:"node",paraId:21,tocIndex:10},{value:"\u73AF\u5883\u3002",paraId:21,tocIndex:10},{value:"\u6700\u540E\u6587\u4EF6\u5982\u4E0B\uFF0C",paraId:22,tocIndex:10},{value:"rules",paraId:22,tocIndex:10},{value:"\u4E2D\u7684\u914D\u7F6E\u6839\u636E\u81EA\u5DF1\u7684\u9700\u8981\u8BBE\u7F6E\u3002",paraId:22,tocIndex:10},{value:`module.exports = {
   env: {
     // \u4FDD\u8BC1\u5404\u79CD\u5F15\u5165\u65B9\u5F0F\u4E0D\u62A5\u9519
-    browser: true\uFF0C
-    es2021: true\uFF0C
-    node: true\uFF0C
-    commonjs: true\uFF0C
+    browser: true,
+    es2021: true,
+    node: true,
+    commonjs: true,
     amd: true
-  }\uFF0C
+  },
   extends: [
-    'eslint:recommended'\uFF0C
-    'plugin:react/recommended'\uFF0C
-    'plugin:@typescript-eslint/recommended'\uFF0C
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/jsx-runtime'
-  ]\uFF0C
-  overrides: []\uFF0C
+  ],
+  overrides: [],
   settings: {
     react: {
       version: 'detect'
     }
-  }\uFF0C
-  parser: '@typescript-eslint/parser'\uFF0C
+  },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
-    }\uFF0C
-    ecmaVersion: 'latest'\uFF0C
+    },
+    ecmaVersion: 'latest',
     sourceType: 'module'
-  }\uFF0C
-  plugins: ['react'\uFF0C '@typescript-eslint']\uFF0C
+  },
+  plugins: ['react', '@typescript-eslint'],
   rules: {
-    'react/jsx-uses-react': 'off'\uFF0C // \u5173\u95ED\u5FC5\u987B\u5F15\u5165React
-    'react/react-in-jsx-scope': 'off'\uFF0C
-    '@typescript-eslint/no-var-requires': 0\uFF0C // \u53EF\u4EE5\u4F7F\u7528require\u5F15\u5165
-    '@typescript-eslint/no-non-null-assertion': 'off'\uFF0C
+    'react/jsx-uses-react': 'off', // \u5173\u95ED\u5FC5\u987B\u5F15\u5165React
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-var-requires': 0, // \u53EF\u4EE5\u4F7F\u7528require\u5F15\u5165
+    '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-explicit-any': 'off'
   }
 };
 
 `,paraId:23,tocIndex:10},{value:"\u5728\u5B9E\u9645\u5F00\u53D1\u8FC7\u7A0B\u4E2D\uFF0C\u4E3A\u4E86\u7F29\u77ED\u68C0\u67E5\u65F6\u95F4\u4EE5\u53CA\u4E0D\u68C0\u6D4B\u6CA1\u5FC5\u8981\u7684\u6587\u4EF6\uFF0C\u6211\u4EEC\u901A\u5E38\u53EA\u68C0\u67E5\u63D0\u4EA4\u5230\u6682\u5B58\u533A\u7684\u6587\u4EF6\uFF0C",paraId:24,tocIndex:11},{value:"git add",paraId:24,tocIndex:11},{value:"\u6DFB\u52A0\u7684\u6587\u4EF6\u3002\u6211\u4EEC\u901A\u8FC7",paraId:24,tocIndex:11},{value:"lint-staged",paraId:24,tocIndex:11},{value:"\u6765\u5E2E\u6211\u4EEC\u5B9E\u73B0\u3002",paraId:24,tocIndex:11},{value:`yarn add lint-staged -D
 `,paraId:25,tocIndex:11},{value:"\u4FEE\u6539 ",paraId:26,tocIndex:11},{value:"package.json",paraId:26,tocIndex:11},{value:" \u811A\u672C",paraId:26,tocIndex:11},{value:"eslint",paraId:26,tocIndex:11},{value:"\u7684\u914D\u7F6E\u3002",paraId:26,tocIndex:11},{value:"lint-staged",paraId:27,tocIndex:11},{value:"\u9ED8\u8BA4\u53EA\u6709\u68C0\u6D4B\u5230",paraId:27,tocIndex:11},{value:"eslint",paraId:27,tocIndex:11},{value:"\u8BED\u6CD5\u62A5\u9519\u624D\u4F1A\u963B\u6B62\u4EE3\u7801\u63D0\u4EA4\uFF0C\u5982\u679C\u60F3\u6709\u8B66\u544A\u65F6\u4E5F\u963B\u6B62\u4EE3\u7801\u63D0\u4EA4\uFF0C\u9700\u8981\u7ED9",paraId:27,tocIndex:11},{value:"eslint",paraId:27,tocIndex:11},{value:"\u68C0\u6D4B\u914D\u7F6E\u53C2\u6570",paraId:27,tocIndex:11},{value:"--max-warnings=0",paraId:27,tocIndex:11},{value:"\u3002",paraId:27,tocIndex:11},{value:`  "scripts": {
-    "eslint": "eslint --max-warnings=0"\uFF0C
+    "eslint": "eslint --max-warnings=0",
   }
 `,paraId:28,tocIndex:11},{value:"\u5728 ",paraId:29,tocIndex:11},{value:"package.json",paraId:29,tocIndex:11},{value:" \u6DFB\u52A0",paraId:29,tocIndex:11},{value:"lint-staged",paraId:29,tocIndex:11},{value:"\u914D\u7F6E\u3002",paraId:29,tocIndex:11},{value:`  "lint-staged": {
-    "src/**/*.{ts\uFF0Ctsx}": [
+    "src/**/*.{ts,tsx}": [
       "yarn run eslint"
-    ]\uFF0C
-  }\uFF0C
+    ],
+  },
 `,paraId:30,tocIndex:11},{value:"\u5F53\u6267\u884C ",paraId:31,tocIndex:11},{value:"npx lint-staged",paraId:31,tocIndex:11},{value:"\uFF0C\u5C31\u4F1A\u68C0\u6D4B\u6DFB\u52A0\u5230\u6682\u5B58\u533A\u7684\u6587\u4EF6\u662F\u5426\u6709\u8BED\u6CD5\u95EE\u9898\u3002",paraId:31,tocIndex:11},{value:"\u5728\u9879\u76EE\u4E2D\u4F7F\u7528\u4E86",paraId:32,tocIndex:12},{value:"ts",paraId:32,tocIndex:12},{value:"\uFF0C\u4F46\u4E00\u4E9B\u7C7B\u578B\u95EE\u9898\uFF0C\u73B0\u5728\u914D\u7F6E\u7684",paraId:32,tocIndex:12},{value:"eslint",paraId:32,tocIndex:12},{value:"\u662F\u68C0\u6D4B\u4E0D\u51FA\u6765\u7684\uFF0C\u9700\u8981\u4F7F\u7528",paraId:32,tocIndex:12},{value:"ts",paraId:32,tocIndex:12},{value:"\u63D0\u4F9B\u7684",paraId:32,tocIndex:12},{value:"tsc",paraId:32,tocIndex:12},{value:"\u5DE5\u5177\u8FDB\u884C\u68C0\u6D4B\u3002",paraId:32,tocIndex:12},{value:`"pre-check": "tsc && npx lint-staged"
 `,paraId:33,tocIndex:12},{value:"\u6267\u884C",paraId:34,tocIndex:12},{value:"yarn run pre-check",paraId:34,tocIndex:12},{value:"\uFF0C\u53D1\u73B0\u5DF2\u7ECF\u53EF\u4EE5\u68C0\u6D4B\u51FA\u7C7B\u578B\u62A5\u9519\u4E86\u3002",paraId:34,tocIndex:12},{value:"\u4E3A\u4E86\u907F\u514D\u628A\u4E0D\u89C4\u8303\u7684\u4EE3\u7801\u63D0\u4EA4\u5230\u8FDC\u7A0B\u4ED3\u5E93\uFF0C\u4E00\u822C\u4F1A\u5728",paraId:35,tocIndex:13},{value:"git",paraId:35,tocIndex:13},{value:"\u63D0\u4EA4\u4EE3\u7801\u65F6\u5BF9\u4EE3\u7801\u8BED\u6CD5\u8FDB\u884C\u68C0\u6D4B\uFF0C\u53EA\u6709\u68C0\u6D4B\u901A\u8FC7\u65F6\u624D\u80FD\u88AB\u63D0\u4EA4\uFF0C",paraId:35,tocIndex:13},{value:"git",paraId:35,tocIndex:13},{value:"\u63D0\u4F9B\u4E86\u4E00\u7CFB\u5217\u7684",paraId:35,tocIndex:13},{value:"githooks",paraId:35,tocIndex:13},{value:"\uFF0C\u800C\u6211\u4EEC\u9700\u8981\u5176\u4E2D\u7684",paraId:35,tocIndex:13},{value:"pre-commit",paraId:35,tocIndex:13},{value:"\u94A9\u5B50\uFF0C\u5B83\u4F1A\u5728",paraId:35,tocIndex:13},{value:"git commit",paraId:35,tocIndex:13},{value:"\u628A\u4EE3\u7801\u63D0\u4EA4\u5230\u672C\u5730\u4ED3\u5E93\u4E4B\u524D\u6267\u884C\uFF0C\u53EF\u4EE5\u5728\u8FD9\u4E2A\u9636\u6BB5\u68C0\u6D4B\u4EE3\u7801\uFF0C\u5982\u679C\u68C0\u6D4B\u4E0D\u901A\u8FC7\u5C31\u9000\u51FA\u547D\u4EE4\u884C\u8FDB\u7A0B\u505C\u6B62",paraId:35,tocIndex:13},{value:"commit",paraId:35,tocIndex:13},{value:"\u3002",paraId:35,tocIndex:13},{value:"\u5B89\u88C5",paraId:36,tocIndex:14},{value:"husky",paraId:36,tocIndex:14},{value:"\u3002",paraId:36,tocIndex:14},{value:`yarn add husky -D
 `,paraId:37,tocIndex:14},{value:"\u914D\u7F6E",paraId:38,tocIndex:14},{value:"husky",paraId:38,tocIndex:14},{value:"\u7684",paraId:38,tocIndex:14},{value:"pre-commit",paraId:38,tocIndex:14},{value:"\u94A9\u5B50\u3002",paraId:38,tocIndex:14},{value:"\u751F\u6210 ",paraId:39,tocIndex:14},{value:".husky",paraId:39,tocIndex:14},{value:" \u914D\u7F6E\u6587\u4EF6\u5939\uFF08\u5982\u679C\u9879\u76EE\u4E2D\u6CA1\u6709\u521D\u59CB\u5316",paraId:39,tocIndex:14},{value:"git",paraId:39,tocIndex:14},{value:"\uFF0C\u9700\u8981\u5148\u6267\u884C",paraId:39,tocIndex:14},{value:"git init",paraId:39,tocIndex:14},{value:"\uFF09",paraId:39,tocIndex:14},{value:`npx husky install
@@ -7702,34 +7702,34 @@ yarn run pre-check
 `,paraId:44,tocIndex:14},{value:"\u53EF\u4EE5\u770B\u5230\u63D0\u4EA4\u7684\u65F6\u5019\u76D1\u542C\u4E86",paraId:45,tocIndex:14},{value:"pre-commit",paraId:45,tocIndex:14},{value:"\u94A9\u5B50\u6267\u884C\u4E86",paraId:45,tocIndex:14},{value:"yarn run pre-check",paraId:45,tocIndex:14},{value:"\uFF0C \u4F7F\u7528",paraId:45,tocIndex:14},{value:"eslint",paraId:45,tocIndex:14},{value:"\u68C0\u6D4B\u4E86",paraId:45,tocIndex:14},{value:"git",paraId:45,tocIndex:14},{value:"\u6682\u5B58\u533A\u7684\u6587\u4EF6\uFF0C\u5E76\u4E14\u53D1\u73B0\u4E86 ",paraId:45,tocIndex:14},{value:"home.tsx",paraId:45,tocIndex:14},{value:" \u7684\u8B66\u544A\uFF0C\u9000\u51FA\u4E86\u547D\u4EE4\u884C\uFF0C\u6CA1\u6709\u6267\u884C",paraId:45,tocIndex:14},{value:"git commit",paraId:45,tocIndex:14},{value:"\u628A\u6682\u5B58\u533A\u4EE3\u7801\u63D0\u4EA4\u5230\u672C\u5730\u4ED3\u5E93\u3002",paraId:45,tocIndex:14},{value:"\u4E3A\u4E86\u5728\u591A\u4EBA\u5F00\u53D1\u4E2D\u5176\u4ED6\u4EBA\u80FD\u7406\u89E3\u672C\u6B21\u63D0\u4EA4\u4FEE\u6539\u7684\u5927\u81F4\u5185\u5BB9\uFF0C\u65B9\u4FBF\u7EF4\u62A4\u8FED\u4EE3\u3002\u6211\u4EEC\u53EF\u4EE5\u4F7F\u7528",paraId:46,tocIndex:15},{value:"githooks",paraId:46,tocIndex:15},{value:"\u4E2D",paraId:46,tocIndex:15},{value:"commit-msg",paraId:46,tocIndex:15},{value:"\u5728",paraId:46,tocIndex:15},{value:"commit",paraId:46,tocIndex:15},{value:"\u4E4B\u524D\u83B7\u53D6\u5230",paraId:46,tocIndex:15},{value:"commit",paraId:46,tocIndex:15},{value:"\u5907\u6CE8\uFF0C\u901A\u8FC7\u8FD9\u4E2A\u94A9\u5B50\u6765\u9A8C\u8BC1\u5907\u6CE8\u662F\u5426\u5408\u7406\u3002\u800C\u9A8C\u8BC1\u7684\u89C4\u8303\u5C31\u662F\u901A\u8FC7",paraId:46,tocIndex:15},{value:"commitlint",paraId:46,tocIndex:15},{value:"\u6765\u5B9A\u4E49\u3002",paraId:46,tocIndex:15},{value:`yarn add @commitlint/config-conventional @commitlint/cli -D
 `,paraId:47,tocIndex:16},{value:"\u5728\u6839\u76EE\u5F55\u521B\u5EFA ",paraId:48,tocIndex:16},{value:"commitlint.config.js",paraId:48,tocIndex:16},{value:" \u6587\u4EF6\uFF0C\u6DFB\u52A0\u914D\u7F6E\u5982\u4E0B:",paraId:48,tocIndex:16},{value:`module.exports = {
   // \u7EE7\u627F\u7684\u89C4\u5219
-  extends: ['@commitlint/config-conventional']\uFF0C
+  extends: ['@commitlint/config-conventional'],
   // \u5B9A\u4E49\u89C4\u5219\u7C7B\u578B
   rules: {
     // type \u7C7B\u578B\u5B9A\u4E49\uFF0C\u8868\u793A git \u63D0\u4EA4\u7684 type \u5FC5\u987B\u5728\u4EE5\u4E0B\u7C7B\u578B\u8303\u56F4\u5185
     'type-enum': [
-      2\uFF0C
-      'always'\uFF0C
+      2,
+      'always',
       [
-        'feat'\uFF0C // \u65B0\u529F\u80FD feature
-        'fix'\uFF0C // \u4FEE\u590D bug
-        'docs'\uFF0C // \u6587\u6863\u6CE8\u91CA
-        'style'\uFF0C // \u4EE3\u7801\u683C\u5F0F(\u4E0D\u5F71\u54CD\u4EE3\u7801\u8FD0\u884C\u7684\u53D8\u52A8)
-        'refactor'\uFF0C // \u91CD\u6784(\u65E2\u4E0D\u589E\u52A0\u65B0\u529F\u80FD\uFF0C\u4E5F\u4E0D\u662F\u4FEE\u590Dbug)
-        'perf'\uFF0C // \u6027\u80FD\u4F18\u5316
-        'test'\uFF0C // \u589E\u52A0\u6D4B\u8BD5
-        'chore'\uFF0C // \u6784\u5EFA\u8FC7\u7A0B\u6216\u8F85\u52A9\u5DE5\u5177\u7684\u53D8\u52A8
-        'revert'\uFF0C // \u56DE\u9000
+        'feat', // \u65B0\u529F\u80FD feature
+        'fix', // \u4FEE\u590D bug
+        'docs', // \u6587\u6863\u6CE8\u91CA
+        'style', // \u4EE3\u7801\u683C\u5F0F(\u4E0D\u5F71\u54CD\u4EE3\u7801\u8FD0\u884C\u7684\u53D8\u52A8)
+        'refactor', // \u91CD\u6784(\u65E2\u4E0D\u589E\u52A0\u65B0\u529F\u80FD,\u4E5F\u4E0D\u662F\u4FEE\u590Dbug)
+        'perf', // \u6027\u80FD\u4F18\u5316
+        'test', // \u589E\u52A0\u6D4B\u8BD5
+        'chore', // \u6784\u5EFA\u8FC7\u7A0B\u6216\u8F85\u52A9\u5DE5\u5177\u7684\u53D8\u52A8
+        'revert', // \u56DE\u9000
         'build' // \u6253\u5305
       ]
-    ]\uFF0C
+    ],
     // subject \u5927\u5C0F\u5199\u4E0D\u505A\u6821\u9A8C
-    'subject-case': [0]\uFF0C
-    'type-case': [0]\uFF0C
-    'type-empty': [0]\uFF0C
-    'scope-empty': [0]\uFF0C
-    'scope-case': [0]\uFF0C
-    'subject-full-stop': [0\uFF0C 'never']\uFF0C
-    'header-max-length': [0\uFF0C 'always'\uFF0C 72]
+    'subject-case': [0],
+    'type-case': [0],
+    'type-empty': [0],
+    'scope-empty': [0],
+    'scope-case': [0],
+    'subject-full-stop': [0, 'never'],
+    'header-max-length': [0, 'always', 72]
   }
 };
 `,paraId:49,tocIndex:16},{value:"\u8BA9",paraId:50,tocIndex:17},{value:"husky",paraId:50,tocIndex:17},{value:"\u76D1\u542C",paraId:50,tocIndex:17},{value:"commit-msg",paraId:50,tocIndex:17},{value:"\u94A9\u5B50\uFF0C\u5728\u94A9\u5B50\u51FD\u6570\u4E2D\u4F7F\u7528",paraId:50,tocIndex:17},{value:"commitlint",paraId:50,tocIndex:17},{value:"\u6765\u9A8C\u8BC1\u3002",paraId:50,tocIndex:17},{value:`npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
@@ -7743,40 +7743,40 @@ yarn run pre-check
 `,paraId:61,tocIndex:20},{value:"\u5728\u6839\u76EE\u5F55\u521B\u5EFA ",paraId:62,tocIndex:20},{value:".cz-config.js",paraId:62,tocIndex:20},{value:" \u81EA\u5B9A\u4E49\u63D0\u793A\u6587\u4EF6\uFF1A",paraId:62,tocIndex:20},{value:`module.exports = {
  \xA0// \u53EF\u9009\u7C7B\u578B\uFF0C\u548C\u4E0A\u9762commitlint.config.js\u914D\u7F6E\u7684\u89C4\u5219\u4E00\u4E00\u5BF9\u5E94
  \xA0types: [
- \xA0  { value: 'feat'\uFF0C name: 'feat: \u65B0\u529F\u80FD' }\uFF0C
- \xA0  { value: 'fix'\uFF0C name: 'fix: \u4FEE\u590D' }\uFF0C
- \xA0  { value: 'docs'\uFF0C name: 'docs: \u6587\u6863\u53D8\u66F4' }\uFF0C
- \xA0  { value: 'style'\uFF0C name: 'style: \u4EE3\u7801\u683C\u5F0F(\u4E0D\u5F71\u54CD\u4EE3\u7801\u8FD0\u884C\u7684\u53D8\u52A8)' }\uFF0C
- \xA0  { value: 'refactor'\uFF0C name: 'refactor: \u91CD\u6784(\u65E2\u4E0D\u662F\u589E\u52A0feature\uFF0C\u4E5F\u4E0D\u662F\u4FEE\u590Dbug)' }\uFF0C
- \xA0  { value: 'perf'\uFF0C name: 'perf: \u6027\u80FD\u4F18\u5316' }\uFF0C
- \xA0  { value: 'test'\uFF0C name: 'test: \u589E\u52A0\u6D4B\u8BD5' }\uFF0C
- \xA0  { value: 'chore'\uFF0C name: 'chore: \u6784\u5EFA\u8FC7\u7A0B\u6216\u8F85\u52A9\u5DE5\u5177\u7684\u53D8\u52A8' }\uFF0C
- \xA0  { value: 'revert'\uFF0C name: 'revert: \u56DE\u9000' }\uFF0C
- \xA0  { value: 'build'\uFF0C name: 'build: \u6253\u5305' }
-  ]\uFF0C
+ \xA0  { value: 'feat', name: 'feat: \u65B0\u529F\u80FD' },
+ \xA0  { value: 'fix', name: 'fix: \u4FEE\u590D' },
+ \xA0  { value: 'docs', name: 'docs: \u6587\u6863\u53D8\u66F4' },
+ \xA0  { value: 'style', name: 'style: \u4EE3\u7801\u683C\u5F0F(\u4E0D\u5F71\u54CD\u4EE3\u7801\u8FD0\u884C\u7684\u53D8\u52A8)' },
+ \xA0  { value: 'refactor', name: 'refactor: \u91CD\u6784(\u65E2\u4E0D\u662F\u589E\u52A0feature,\u4E5F\u4E0D\u662F\u4FEE\u590Dbug)' },
+ \xA0  { value: 'perf', name: 'perf: \u6027\u80FD\u4F18\u5316' },
+ \xA0  { value: 'test', name: 'test: \u589E\u52A0\u6D4B\u8BD5' },
+ \xA0  { value: 'chore', name: 'chore: \u6784\u5EFA\u8FC7\u7A0B\u6216\u8F85\u52A9\u5DE5\u5177\u7684\u53D8\u52A8' },
+ \xA0  { value: 'revert', name: 'revert: \u56DE\u9000' },
+ \xA0  { value: 'build', name: 'build: \u6253\u5305' }
+  ],
  \xA0// \u6D88\u606F\u6B65\u9AA4\uFF0C\u6B63\u5E38\u53EA\u9700\u8981\u9009\u62E9
  \xA0messages: {
- \xA0 \xA0type: '\u8BF7\u9009\u62E9\u63D0\u4EA4\u7C7B\u578B:'\uFF0C
+ \xA0 \xA0type: '\u8BF7\u9009\u62E9\u63D0\u4EA4\u7C7B\u578B:',
  \xA0 \xA0// customScope: '\u8BF7\u8F93\u5165\u4FEE\u6539\u8303\u56F4(\u53EF\u9009):'\uFF0C
- \xA0 \xA0subject: '\u8BF7\u7B80\u8981\u63CF\u8FF0\u63D0\u4EA4(\u5FC5\u586B):'\uFF0C
- \xA0 \xA0// body: '\u8BF7\u8F93\u5165\u8BE6\u7EC6\u63CF\u8FF0(\u53EF\u9009):'\uFF0C
- \xA0 \xA0footer: '\u8BF7\u8F93\u5165\u8981\u5173\u95ED\u7684issue(\u53EF\u9009):'\uFF0C
+ \xA0 \xA0subject: '\u8BF7\u7B80\u8981\u63CF\u8FF0\u63D0\u4EA4(\u5FC5\u586B):',
+ \xA0 \xA0// body: '\u8BF7\u8F93\u5165\u8BE6\u7EC6\u63CF\u8FF0(\u53EF\u9009):',
+ \xA0 \xA0footer: '\u8BF7\u8F93\u5165\u8981\u5173\u95ED\u7684issue(\u53EF\u9009):',
  \xA0 \xA0confirmCommit: '\u786E\u8BA4\u4F7F\u7528\u4EE5\u4E0A\u4FE1\u606F\u63D0\u4EA4\uFF1F(y/n)'
-  }\uFF0C
+  },
  \xA0// \u8DF3\u8FC7\u95EE\u9898\uFF1A\u4FEE\u6539\u8303\u56F4\uFF0C\u81EA\u5B9A\u4E49\u4FEE\u6539\u8303\u56F4\uFF0C\u8BE6\u7EC6\u63CF\u8FF0\uFF0Cissue\u76F8\u5173
- \xA0skipQuestions: ['scope'\uFF0C 'customScope'\uFF0C 'body'\uFF0C 'footer']\uFF0C
+ \xA0skipQuestions: ['scope', 'customScope', 'body', 'footer'],
  \xA0// subject\u63CF\u8FF0\u6587\u5B57\u957F\u5EA6\u6700\u957F\u662F72
  \xA0subjectLimit: 72
 }
 `,paraId:63,tocIndex:20},{value:"\u8FD9\u4E2A\u65F6\u5019\u518D\u4FEE\u6539\u6587\u4EF6\uFF0C\u4F7F\u7528 ",paraId:64,tocIndex:20},{value:"git cz",paraId:64,tocIndex:20},{value:" \u4EE3\u66FF ",paraId:64,tocIndex:20},{value:"git commit",paraId:64,tocIndex:20},{value:"\u547D\u4EE4\u63D0\u4EA4\u4EE3\u7801\u3002",paraId:64,tocIndex:20},{value:"\u4F1A\u51FA\u73B0\u9009\u62E9\u63D0\u4EA4\u7C7B\u578B\u548C\u586B\u5199\u63D0\u4EA4\u63CF\u8FF0\u4FE1\u606F\uFF0C\u9009\u62E9 ",paraId:65,tocIndex:20},{value:"yes",paraId:65,tocIndex:20},{value:" \u540E\uFF0C\u4F1A\u89E6\u53D1",paraId:65,tocIndex:20},{value:"git",paraId:65,tocIndex:20},{value:"\u63D0\u4EA4\u8BED\u6CD5\u9A8C\u8BC1\uFF0C\u6700\u7EC8\u63D0\u4EA4\u6210\u529F\u4E86\u3002",paraId:65,tocIndex:20},{value:"css",paraId:66,tocIndex:21},{value:"\u5C5E\u6027\u7684\u4E66\u5199\u987A\u5E8F\uFF0C\u9009\u62E9\u5668\u4F7F\u7528\uFF0C\u90FD\u4F1A\u5BF9\u6574\u4F53\u5E94\u7528\u6027\u80FD\u4EA7\u751F\u5F71\u54CD\u3002\u6240\u4EE5\u4E3A\u4E86",paraId:66,tocIndex:21},{value:"css",paraId:66,tocIndex:21},{value:"\u6027\u80FD\u4F18\u5316\uFF0C\u6211\u4EEC\u53EF\u4EE5\u501F\u52A9",paraId:66,tocIndex:21},{value:"stylelint",paraId:66,tocIndex:21},{value:"\u6765\u89C4\u8303",paraId:66,tocIndex:21},{value:"css",paraId:66,tocIndex:21},{value:"\u4EE3\u7801\u4E66\u5199\uFF0C\u4ECE\u800C\u6709\u6548\u63D0\u5347\u5E94\u7528\u7684\u6027\u80FD\u3002",paraId:66,tocIndex:21},{value:"\u6253\u5F00",paraId:67,tocIndex:22},{value:"vsocde",paraId:67,tocIndex:22},{value:"\u63D2\u4EF6\u5546\u5E97\uFF0C\u641C\u7D22",paraId:67,tocIndex:22},{value:"Stylelint",paraId:67,tocIndex:22},{value:"\uFF0C\u7136\u540E\u8FDB\u884C\u5B89\u88C5\u3002",paraId:67,tocIndex:22},{value:"\u652F\u6301\u68C0\u6D4B",paraId:68,tocIndex:23},{value:"css",paraId:68,tocIndex:23},{value:"\u6587\u4EF6\u9700\u8981\u5B89\u88C5",paraId:68,tocIndex:23},{value:"stylelint",paraId:68,tocIndex:23},{value:"\u76F8\u5173\u4F9D\u8D56\u3002",paraId:68,tocIndex:23},{value:"stylelint",paraId:69,tocIndex:23},{value:": ",paraId:69,tocIndex:23},{value:"stylelint",paraId:69,tocIndex:23},{value:"\u6838\u5FC3\u4F9D\u8D56\u3002",paraId:69,tocIndex:23},{value:"stylelint-config-standard",paraId:69,tocIndex:23},{value:": ",paraId:69,tocIndex:23},{value:"stylelint",paraId:69,tocIndex:23},{value:"\u62D3\u5C55\uFF0C\u652F\u6301\u914D\u7F6E\u6587\u4EF6\u62D3\u5C55\u4E00\u4E9B\u68C0\u6D4B\u89C4\u5219\u3002",paraId:69,tocIndex:23},{value:"stylelint-order",paraId:69,tocIndex:23},{value:": \u68C0\u6D4B",paraId:69,tocIndex:23},{value:"css",paraId:69,tocIndex:23},{value:"\u5C5E\u6027\u4E66\u5199\u987A\u5E8F\u7684\u89C4\u5219\u96C6\u5408\uFF0C\u6BD4\u5982",paraId:69,tocIndex:23},{value:"display:flex",paraId:69,tocIndex:23},{value:"\u8981\u5199\u5728",paraId:69,tocIndex:23},{value:"align-items",paraId:69,tocIndex:23},{value:"\u4E4B\u524D\u3002",paraId:69,tocIndex:23},{value:"stylelint-config-recess-order",paraId:69,tocIndex:23},{value:": ",paraId:69,tocIndex:23},{value:"stylelint-order",paraId:69,tocIndex:23},{value:"\u63D2\u4EF6\u7684\u7B2C\u4E09\u65B9\u914D\u7F6E\u3002",paraId:69,tocIndex:23},{value:"stylelint-less",paraId:69,tocIndex:23},{value:": \u652F\u6301",paraId:69,tocIndex:23},{value:"less",paraId:69,tocIndex:23},{value:"\u3002",paraId:69,tocIndex:23},{value:`yarn add stylelint stylelint-config-standard stylelint-order stylelint-config-recess-order stylelint-less stylelint-config-recommended-less stylelint-config-prettier -D
 `,paraId:70,tocIndex:23},{value:"\u5728\u6839\u76EE\u5F55\u65B0\u589E ",paraId:71,tocIndex:24},{value:".stylelintrc.js",paraId:71,tocIndex:24},{value:" \u6587\u4EF6\uFF0C\u6DFB\u52A0\u914D\u7F6E\u3002",paraId:71,tocIndex:24},{value:`module.exports = {
-  plugins: ['stylelint-less'\uFF0C 'stylelint-order']\uFF0C
+  plugins: ['stylelint-less', 'stylelint-order'],
   extends: [
-    'stylelint-config-prettier'\uFF0C // \u914D\u7F6Estylelint\u548Cprettier\u517C\u5BB9
-    'stylelint-config-standard'\uFF0C // \u914D\u7F6Estylelint\u62D3\u5C55\u63D2\u4EF6
-    'stylelint-config-recess-order'\uFF0C // \u914D\u7F6Estylelint css\u5C5E\u6027\u4E66\u5199\u987A\u5E8F\u63D2\u4EF6
+    'stylelint-config-prettier', // \u914D\u7F6Estylelint\u548Cprettier\u517C\u5BB9
+    'stylelint-config-standard', // \u914D\u7F6Estylelint\u62D3\u5C55\u63D2\u4EF6
+    'stylelint-config-recess-order', // \u914D\u7F6Estylelint css\u5C5E\u6027\u4E66\u5199\u987A\u5E8F\u63D2\u4EF6
     'stylelint-config-recommended-less'
-  ]\uFF0C
+  ],
   rules: {
     'selector-class-pattern': null // \u8BBE\u7F6E\u7C7B\u540D\u9009\u62E9\u5668\u4E0D\u9075\u5FAA kebab-case
   }
@@ -7792,37 +7792,37 @@ module.exports = {
 \u56E0\u4E3A\u8981\u4F7F\u7528`,paraId:75,tocIndex:25},{value:"stylelint",paraId:75,tocIndex:25},{value:"\u7684\u89C4\u5219\u683C\u5F0F\u5316\u4EE3\u7801\uFF0C\u4E0D\u4F7F\u7528",paraId:75,tocIndex:25},{value:"prettier",paraId:75,tocIndex:25},{value:"\u6765\u683C\u5F0F\u5316",paraId:75,tocIndex:25},{value:"css",paraId:75,tocIndex:25},{value:"\uFF0C",paraId:75,tocIndex:25},{value:"less",paraId:75,tocIndex:25},{value:"\uFF0C",paraId:75,tocIndex:25},{value:"scss",paraId:75,tocIndex:25},{value:"\u6587\u4EF6\u4E86\uFF0C\u5220\u9664\u6389 ",paraId:75,tocIndex:25},{value:".vscode/settins.json",paraId:75,tocIndex:25},{value:"\u4E2D\u914D\u7F6E\u7684\u4F7F\u7528",paraId:75,tocIndex:25},{value:"prettier",paraId:75,tocIndex:25},{value:"\u683C\u5F0F\u5316",paraId:75,tocIndex:25},{value:"css",paraId:75,tocIndex:25},{value:"\uFF0C",paraId:75,tocIndex:25},{value:"less",paraId:75,tocIndex:25},{value:"\uFF0C",paraId:75,tocIndex:25},{value:"scss",paraId:75,tocIndex:25},{value:"\u7684\u914D\u7F6E\uFF0C\u5E76\u6539\u6210\u4EE5\u4E0B\u5185\u5BB9\u3002",paraId:75,tocIndex:25},{value:`{
   // "[css]": {
  \xA0//  "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // }\uFF0C
+  // },
   // "[less]": {
  \xA0//   "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // }\uFF0C
+  // },
   // "[scss]": {
  \xA0// "editor.defaultFormatter": "esbenp.prettier-vscode"
-  // }\uFF0C
+  // },
 
   // \u5F00\u542Fstylelint\u81EA\u52A8\u4FEE\u590D
   "editor.codeActionsOnSave": {
  \xA0  "source.fixAll.stylelint": true // \u5F00\u542Fstylelint\u81EA\u52A8\u4FEE\u590D
-  }\uFF0C
+  },
   // \u5173\u95ED\u7F16\u8F91\u5668\u5185\u7F6E\u6837\u5F0F\u68C0\u67E5\uFF08\u907F\u514D\u4E0Estylelint\u51B2\u7A81\uFF09
-  "css.validate": false\uFF0C
-  "less.validate": false\uFF0C
-  "scss.validate": false\uFF0C
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
   // \u914D\u7F6Estylelint\u68C0\u67E5\u7684\u6587\u4EF6\u7C7B\u578B\u8303\u56F4
-  "stylelint.validate": ["css"\uFF0C "less"\uFF0C "postcss"\uFF0C "scss"\uFF0C "sass"\uFF0C "vue"]\uFF0C
+  "stylelint.validate": ["css", "less", "postcss", "scss", "sass", "vue"],
   // ...
 }
 `,paraId:76,tocIndex:25},{value:"\u5728 ",paraId:77,tocIndex:25},{value:".vscode/settings.json",paraId:77,tocIndex:25},{value:" \u6587\u4EF6\u4E2D\u6DFB\u52A0\u4E0A\u9762",paraId:77,tocIndex:25},{value:"stylelint",paraId:77,tocIndex:25},{value:"\u4FDD\u5B58\u540E\u81EA\u52A8\u4FEE\u590D\u914D\u7F6E\u4EE3\u7801\u540E\uFF0C\u518D\u6D4B\u8BD5\u53EF\u4EE5\u53D1\u73B0",paraId:77,tocIndex:25},{value:"css",paraId:77,tocIndex:25},{value:"\u4F4D\u7F6E\u4F1A\u6309\u89C4\u5219\u91CD\u65B0\u8C03\u6574\u3002",paraId:77,tocIndex:25},{value:"\u81EA\u52A8\u4FEE\u590D\u53EA\u80FD\u4FEE\u590D\u4E00\u90E8\u5206\uFF0C\u6BD4\u5982\u53EF\u6539\u53D8\u5C5E\u6027\u987A\u5E8F\u6216\u8005\u7F29\u8FDB\u6362\u884C\uFF0C\u4F46\u50CF\u7C7B\u540D\u547D\u540D\u89C4\u5219\u4E0D\u7B26\u5408\u89C4\u5B9A\u7684\uFF0C\u81EA\u52A8\u4FEE\u590D\u5C31\u65E0\u80FD\u4E3A\u529B\uFF0C\u9700\u8981\u624B\u52A8\u8C03\u6574\uFF0C\u4E3A\u4E86\u907F\u514D\u628A\u4E0D\u7B26\u5408\u89C4\u8303\u7684\u6837\u5F0F\u4EE3\u7801\u63D0\u4EA4\u5230",paraId:78,tocIndex:26},{value:"git",paraId:78,tocIndex:26},{value:"\u8FDC\u7A0B\u4ED3\u5E93\uFF0C\u9700\u8981\u5728\u63D0\u4EA4\u4EE3\u7801\u65F6\u5BF9\u672C\u6B21\u66F4\u6539\u7684\u6837\u5F0F\u6587\u4EF6\u8FDB\u884C\u8BED\u6CD5\u68C0\u6D4B\u3002",paraId:78,tocIndex:26},{value:"\u4E0A\u9762\u5DF2\u7ECF\u914D\u7F6E\u4E86",paraId:79,tocIndex:26},{value:"husky",paraId:79,tocIndex:26},{value:"\u94A9\u5B50\uFF0C",paraId:79,tocIndex:26},{value:"git commit",paraId:79,tocIndex:26},{value:"\u65F6\u4F1A\u6267\u884C",paraId:79,tocIndex:26},{value:"pre-check",paraId:79,tocIndex:26},{value:"\u811A\u672C\uFF0C\u53EA\u9700\u8981\u4FEE\u6539 ",paraId:79,tocIndex:26},{value:"package.json",paraId:79,tocIndex:26},{value:" \u4E2D\u7684",paraId:79,tocIndex:26},{value:"scripts",paraId:79,tocIndex:26},{value:"\u3002",paraId:79,tocIndex:26},{value:`"scripts": {
   // ...
   "stylelint": "stylelint"
-}\uFF0C
+},
 "lint-staged": {
   // ...
-  "src/**/*.{css\uFF0Cless\uFF0Cscss}": [
+  "src/**/*.{css,less,scss}": [
  \xA0  "npm run stylelint"
   ]
 }
-`,paraId:80,tocIndex:26},{value:"\u5982\u679C\u539F\u6709\u7684\u6837\u5F0F\u6587\u4EF6\u4E5F\u60F3\u505A\u4FEE\u590D\u5904\u7406\uFF0C\u4E00\u79CD\u65B9\u5F0F\u662F\u6328\u4E2A\u6253\u5F00\u6587\u4EF6\u53BB\u6267\u884C",paraId:81,tocIndex:27},{value:"ctrl+s",paraId:81,tocIndex:27},{value:"\u4FDD\u5B58\uFF0C\u6765\u8FBE\u5230\u4FEE\u590D\u6548\u679C\uFF0C\u4F46\u8FD9\u6837\u6548\u7387\u5F88\u4F4E\uFF0C\u53EF\u4EE5\u901A\u8FC7\u547D\u4EE4\u4E00\u952E\u4FEE\u590D\u9879\u76EE\u5185\u6837\u5F0F\u6587\u4EF6\u3002",paraId:81,tocIndex:27},{value:`npx stylelint "src/**/*.{css\uFF0Cless\uFF0Cscss}" --fix
+`,paraId:80,tocIndex:26},{value:"\u5982\u679C\u539F\u6709\u7684\u6837\u5F0F\u6587\u4EF6\u4E5F\u60F3\u505A\u4FEE\u590D\u5904\u7406\uFF0C\u4E00\u79CD\u65B9\u5F0F\u662F\u6328\u4E2A\u6253\u5F00\u6587\u4EF6\u53BB\u6267\u884C",paraId:81,tocIndex:27},{value:"ctrl+s",paraId:81,tocIndex:27},{value:"\u4FDD\u5B58\uFF0C\u6765\u8FBE\u5230\u4FEE\u590D\u6548\u679C\uFF0C\u4F46\u8FD9\u6837\u6548\u7387\u5F88\u4F4E\uFF0C\u53EF\u4EE5\u901A\u8FC7\u547D\u4EE4\u4E00\u952E\u4FEE\u590D\u9879\u76EE\u5185\u6837\u5F0F\u6587\u4EF6\u3002",paraId:81,tocIndex:27},{value:`npx stylelint "src/**/*.{css,less,scss}" --fix
 `,paraId:82,tocIndex:27},{value:"\u5177\u4F53\u7EC6\u8282\u7684",paraId:83,tocIndex:27},{value:"stylelint",paraId:83,tocIndex:27},{value:"\u914D\u7F6E\u53EF\u4EE5\u67E5\u770B",paraId:83,tocIndex:27},{value:"stylelint\u5B98\u7F51",paraId:83,tocIndex:27},{value:"\u3002",paraId:83,tocIndex:27}],Fa={},Ra={title:"hooks\u5C0F\u5DE5\u5177",toc:"content",filename:"docs/blog/technology/react/hooks.md",lastUpdated:1730195519e3,nav:{title:"\u535A\u5BA2",order:4,second:{title:"\u6280\u672F",order:3}},group:{title:"React",order:1},description:"React hooks\u5C0F\u5DE5\u5177",order:2,key:"React hooks"},Xa=[{id:"1-\u5B9E\u73B0useprevious",depth:3,title:"1. \u5B9E\u73B0usePrevious"},{id:"2-\u5B9E\u73B0usedebounce",depth:3,title:"2. \u5B9E\u73B0useDebounce"},{id:"3-\u5B9E\u73B0usethrottle",depth:3,title:"3. \u5B9E\u73B0useThrottle"},{id:"4-\u5B9E\u73B0uselatest",depth:3,title:"4. \u5B9E\u73B0useLatest"},{id:"5-\u5B9E\u73B0useunmount",depth:3,title:"5. \u5B9E\u73B0useUnmount"},{id:"6-\u5B9E\u73B0useupdate",depth:3,title:"6. \u5B9E\u73B0useUpdate"},{id:"7-\u5B9E\u73B0useclickaway",depth:3,title:"7. \u5B9E\u73B0useClickAway"},{id:"8-\u5B9E\u73B0useinterval",depth:3,title:"8. \u5B9E\u73B0useInterval"},{id:"9-sleep\u51FD\u6570",depth:3,title:"9. sleep\u51FD\u6570"}],Ja=[{value:"\u5B58\u50A8\u4E4B\u524D\u5B58\u7684\u503C\u3002",paraId:0,tocIndex:0},{value:`//  App.tsx
 import { useState } from 'react';
 import { usePrevious } from './hooks';
@@ -9678,7 +9678,7 @@ chrome 35 # \u517C\u5BB9chrome 35
         test: /.css$/, //\u5339\u914D css \u6587\u4EF6
         use: [
           // 3.\u5C06\u89E3\u6790\u540E\u7684css \u63D2\u5165\u5230\u5934\u90E8style\u6807\u7B7E\u4E2D(\u505A\u4E86\u6837\u5F0F\u7684\u70ED\u66FF\u6362\u529F\u80FD)
-          'style-loader'
+          'style-loader',
           // 2.\u89E3\u6790css \u4E3A\u6D4F\u89C8\u5668\u53EF\u4EE5\u8BC6\u522B\u7684\u3002 \u5F00\u542FcssModule\uFF0C @import \u7684css\u6587\u4EF6\u4E5F\u901A\u8FC7\u540E\u97622\u4E2Aloader\u7684\u5904\u7406
           { loader: 'css-loader', options: { modules: true, importLoaders: 2 } },
           // 1. \u7ED9css \u6DFB\u52A0\u517C\u5BB9\u6D4F\u89C8\u5668\u7684\u524D\u7F00
@@ -9689,7 +9689,7 @@ chrome 35 # \u517C\u5BB9chrome 35
         test: /.less$/, //\u5339\u914D less \u6587\u4EF6
         use: [
           // 4.\u5C06\u89E3\u6790\u540E\u7684css \u63D2\u5165\u5230\u5934\u90E8style\u6807\u7B7E\u4E2D(\u505A\u4E86\u6837\u5F0F\u7684\u70ED\u66FF\u6362\u529F\u80FD)
-          'style-loader'
+          'style-loader',
           // 3.\u89E3\u6790css \u4E3A\u6D4F\u89C8\u5668\u53EF\u4EE5\u8BC6\u522B\u7684\u3002 \u5F00\u542FcssModule\uFF0C @import \u7684css\u6587\u4EF6\u4E5F\u901A\u8FC7\u540E\u97622\u4E2Aloader\u7684\u5904\u7406
           { loader: 'css-loader', options: { modules: true, importLoaders: 2 } },
           // 2. \u7ED9css \u6DFB\u52A0\u517C\u5BB9\u6D4F\u89C8\u5668\u7684\u524D\u7F00
@@ -10469,7 +10469,7 @@ function diffChildren(fiber: Fiber, newChildren: React.ReactNode) {
 `,paraId:44,tocIndex:14},{value:"\u8BE5\u5C5E\u6027\u6709\u4E24\u4E2A\u5FEB\u6377\u503C\uFF1A",paraId:45,tocIndex:14},{value:"auto",paraId:45,tocIndex:14},{value:"(",paraId:45,tocIndex:14},{value:"1 1 auto",paraId:45,tocIndex:14},{value:")\u548C ",paraId:45,tocIndex:14},{value:"none",paraId:45,tocIndex:14},{value:"(",paraId:45,tocIndex:14},{value:"0 0 auto",paraId:45,tocIndex:14},{value:")\u3002",paraId:45,tocIndex:14},{value:"\u5EFA\u8BAE\u4F18\u5148\u4F7F\u7528\u8FD9\u4E2A\u5C5E\u6027\uFF0C\u800C\u4E0D\u662F\u5355\u72EC\u5199\u4E09\u4E2A\u5206\u79BB\u7684\u5C5E\u6027\uFF0C\u56E0\u4E3A\u6D4F\u89C8\u5668\u4F1A\u63A8\u7B97\u76F8\u5173\u503C\u3002",paraId:45,tocIndex:14},{value:"\u901A\u5E38\u4F1A\u8BBE\u7F6E",paraId:46,tocIndex:14},{value:"flex: 1",paraId:46,tocIndex:14},{value:"\uFF0C\u5B83\u8868\u793A\uFF1A",paraId:46,tocIndex:14},{value:"flex-grow: 1",paraId:47,tocIndex:14},{value:": \u8868\u793A\u5982\u679C\u6709\u5269\u4F59\u7A7A\u95F4\uFF0C\u9879\u76EE\u5C06\u7B49\u5206\u5269\u4F59\u7A7A\u95F4\u3002",paraId:47,tocIndex:14},{value:"flex-shrink: 1",paraId:47,tocIndex:14},{value:": \u8868\u793A\u5982\u679C\u7A7A\u95F4\u4E0D\u8DB3\uFF0C\u9879\u76EE\u5C06\u7B49\u6BD4\u4F8B\u7F29\u5C0F\u4EE5\u9002\u5E94\u7236\u5BB9\u5668\u3002",paraId:47,tocIndex:14},{value:"flex-basis: 0%",paraId:47,tocIndex:14},{value:": \u8868\u793A\u9879\u76EE\u5360\u636E\u7684\u7A7A\u95F4\u4E3A0\uFF0C\u5373\u9879\u76EE\u7684\u5927\u5C0F\u7531\u5185\u5BB9\u51B3\u5B9A\u3002",paraId:47,tocIndex:14},{value:"align-self",paraId:48,tocIndex:15},{value:"\u5C5E\u6027\u5141\u8BB8\u5355\u4E2A\u9879\u76EE\u6709\u4E0E\u5176\u4ED6\u9879\u76EE\u4E0D\u4E00\u6837\u7684\u5BF9\u9F50\u65B9\u5F0F\uFF0C\u53EF\u8986\u76D6",paraId:48,tocIndex:15},{value:"align-items",paraId:48,tocIndex:15},{value:"\u5C5E\u6027\u3002\u9ED8\u8BA4\u503C\u4E3A ",paraId:48,tocIndex:15},{value:"auto",paraId:48,tocIndex:15},{value:"\uFF0C\u8868\u793A\u7EE7\u627F\u7236\u5143\u7D20\u7684",paraId:48,tocIndex:15},{value:"align-items",paraId:48,tocIndex:15},{value:"\u5C5E\u6027\uFF0C\u5982\u679C\u6CA1\u6709\u7236\u5143\u7D20\uFF0C\u5219\u7B49\u540C\u4E8E",paraId:48,tocIndex:15},{value:"stretch",paraId:48,tocIndex:15},{value:"\u3002",paraId:48,tocIndex:15},{value:`.item {
   align-self: auto | flex-start | flex-end | center | baseline | stretch;
 }
-`,paraId:49,tocIndex:15},{value:"\u8BE5\u5C5E\u6027\u53EF\u80FD\u53D66\u4E2A\u503C\uFF0C\u9664\u4E86",paraId:50,tocIndex:15},{value:"auto",paraId:50,tocIndex:15},{value:"\uFF0C\u5176\u4ED6\u90FD\u4E0E",paraId:50,tocIndex:15},{value:"align-items",paraId:50,tocIndex:15},{value:"\u5C5E\u6027\u5B8C\u5168\u4E00\u81F4\u3002",paraId:50,tocIndex:15},{value:"\u7B80\u5355\u6613\u61C2\uFF1A\u4E0E\u4F20\u7EDF\u7684\u5E03\u5C40\u65B9\u5F0F\u76F8\u6BD4\uFF0C",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u7684\u8BED\u6CD5\u548C\u7406\u89E3\u8D77\u6765\u66F4\u52A0\u7B80\u5355\uFF0C\u5BB9\u6613\u4E0A\u624B\u3002",paraId:51,tocIndex:16},{value:"\u5F39\u6027\u548C\u81EA\u9002\u5E94\uFF1A",paraId:51,tocIndex:16},{value:"Flex\u5E03",paraId:51,tocIndex:16},{value:"\u5C40\u80FD\u591F\u81EA\u52A8\u9002\u5E94\u4E0D\u540C\u5C3A\u5BF8\u7684\u5C4F\u5E55\uFF0C\u8BA9\u9875\u9762\u66F4\u5177\u6709\u5F39\u6027\u3002",paraId:51,tocIndex:16},{value:"\u7B49\u9AD8\u5E03\u5C40\uFF1A",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u53EF\u4EE5\u65B9\u4FBF\u5730\u5B9E\u73B0\u591A\u5217\u7B49\u9AD8\u5E03\u5C40\u3002",paraId:51,tocIndex:16},{value:"\u5BF9\u9F50\u548C\u6392\u5E8F\uFF1A",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u652F\u6301\u5404\u79CD\u5BF9\u9F50\u65B9\u5F0F\uFF0C\u5305\u62EC\u6C34\u5E73\u548C\u5782\u76F4\u5BF9\u9F50\uFF0C\u5E76\u4E14\u53EF\u4EE5\u901A\u8FC7\u8BBE\u7F6E",paraId:51,tocIndex:16},{value:"order",paraId:51,tocIndex:16},{value:"\u5C5E\u6027\u5BF9\u5B50\u5143\u7D20\u8FDB\u884C\u6392\u5E8F\u3002",paraId:51,tocIndex:16},{value:"\u53EF\u4EE5\u4E0E\u4F20\u7EDF\u5E03\u5C40\u7ED3\u5408\u4F7F\u7528\uFF1A",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u5E76\u4E0D\u662F\u5B8C\u5168\u53D6\u4EE3\u4F20\u7EDF\u7684\u5E03\u5C40\u65B9\u5F0F\uFF0C\u5B83\u53EF\u4EE5\u4E0E\u4F20\u7EDF\u5E03\u5C40\u65B9\u5F0F\u7ED3\u5408\u4F7F\u7528\uFF0C\u5B9E\u73B0\u66F4\u7075\u6D3B\u7684\u5E03\u5C40\u6548\u679C\u3002",paraId:51,tocIndex:16},{value:"\u672C\u6587\u6458\u81EA\uFF1A ",paraId:52,tocIndex:16},{value:"Flex \u5E03\u5C40\u6559\u7A0B\uFF1A\u8BED\u6CD5\u7BC7",paraId:52,tocIndex:16}],Wn={},Tn={title:"umi-template",toc:"content",filename:"docs/FEED/web/umi/index.md",lastUpdated:1737341412e3,nav:{title:"\u524D\u7AEF\u5DE5\u7A0B\u5316",order:3,second:{title:"WEB",order:1}},group:{title:"UMI",order:2},description:"umi max",order:1,key:"umi max"},Cd=[{id:"\u4F7F\u7528",depth:2,title:"\u4F7F\u7528"},{id:"\u542F\u52A8\u4EE5\u53CA\u6253\u5305",depth:3,title:"\u542F\u52A8\u4EE5\u53CA\u6253\u5305"},{id:"\u914D\u7F6E",depth:3,title:"\u914D\u7F6E"},{id:"\u83DC\u5355\u914D\u7F6E",depth:3,title:"\u83DC\u5355\u914D\u7F6E"},{id:"\u4E8C\u6B21\u5F00\u53D1",depth:2,title:"\u4E8C\u6B21\u5F00\u53D1"},{id:"\u767B\u5F55\u53CA\u9000\u51FA",depth:3,title:"\u767B\u5F55\u53CA\u9000\u51FA"},{id:"\u914D\u7F6E-1",depth:3,title:"\u914D\u7F6E"},{id:"antd-\u914D\u7F6E",depth:4,title:"antd \u914D\u7F6E"},{id:"\u672C\u5730https",depth:4,title:"\u672C\u5730https"},{id:"\u914D\u7F6Eanalytics",depth:4,title:"\u914D\u7F6Eanalytics"},{id:"\u8FD0\u884C\u65F6\u914D\u7F6E",depth:3,title:"\u8FD0\u884C\u65F6\u914D\u7F6E"},{id:"antd-\u914D\u7F6E-1",depth:4,title:"antd \u914D\u7F6E"},{id:"get-\u8BF7\u6C42\u53C2\u6570\u5E8F\u5217\u5316",depth:4,title:"GET \u8BF7\u6C42\u53C2\u6570\u5E8F\u5217\u5316"},{id:"\u9519\u8BEF\u5904\u7406",depth:4,title:"\u9519\u8BEF\u5904\u7406"},{id:"\u8BF7\u6C42\u62E6\u622A\u5668",depth:4,title:"\u8BF7\u6C42\u62E6\u622A\u5668"},{id:"\u54CD\u5E94\u62E6\u622A\u5668",depth:4,title:"\u54CD\u5E94\u62E6\u622A\u5668"},{id:"\u6743\u9650\u914D\u7F6E",depth:3,title:"\u6743\u9650\u914D\u7F6E"},{id:"\u6DFB\u52A0mock",depth:3,title:"\u6DFB\u52A0mock"},{id:"\u663E\u793A\u5B89\u88C5antd5xx",depth:3,title:"\u663E\u793A\u5B89\u88C5antd(5.x.x)"},{id:"\u6DFB\u52A0git-commit-\u8F85\u52A9\u5907\u6CE8\u4FE1\u606F",depth:3,title:"\u6DFB\u52A0git commit \u8F85\u52A9\u5907\u6CE8\u4FE1\u606F"},{id:"\u5C0F\u7EC4\u4EF6",depth:3,title:"\u5C0F\u7EC4\u4EF6"},{id:"\u5DE5\u5177",depth:3,title:"\u5DE5\u5177"}],To=[{value:"\u672C\u6846\u67B6\u57FA\u4E8E",paraId:0},{value:"Umi Max",paraId:0},{value:"\u57FA\u7840\u6846\u67B6\u505A\u4E86\u4E8C\u6B21\u5F00\u53D1\u3002\u5982\u679C\u4F60\u5BF9",paraId:0},{value:"Umi Max",paraId:0},{value:"\u8FD8\u4E0D\u4E86\u89E3\uFF0C\u53EF\u4EE5\u5148\u770B\u770B\u5B83\u7684",paraId:0},{value:"\u5B98\u65B9\u6587\u6863",paraId:0},{value:"\u3002\u672C\u6587\u6863\u4E3B\u8981\u8BB2\u8FF0\u8BE5\u6846\u67B6\u7684\u4F7F\u7528\u65B9\u6CD5\u4EE5\u53CA\u76F8\u8F83\u4E8E",paraId:0},{value:"Umi Max",paraId:0},{value:"\u57FA\u7840\u6846\u67B6\uFF0C\u505A\u4E86\u54EA\u4E9B\u66F4\u6539\u548C\u6DFB\u52A0\u4EE5\u65B9\u4FBF\u6211\u4EEC\u66F4\u597D\u7684\u76F4\u63A5\u4F7F\u7528\u3002",paraId:0},{value:"\u56E0\u4E3A\u5728 ",paraId:1,tocIndex:1},{value:"package.json",paraId:1,tocIndex:1},{value:" \u4E2D\u914D\u7F6E\u4E86\u5982\u4E0B",paraId:1,tocIndex:1},{value:"script",paraId:1,tocIndex:1},{value:"\uFF0C\u6240\u4EE5\u53EF\u4EE5\u6267\u884C\u4EE5\u4E0B\u64CD\u4F5C\uFF1A",paraId:1,tocIndex:1},{value:"yarn start",paraId:2,tocIndex:1},{value:"\uFF1A\u542F\u52A8\u9879\u76EE\u3002",paraId:2,tocIndex:1},{value:"yarn build",paraId:2,tocIndex:1},{value:"\uFF1A\u6253\u5305\u9879\u76EE\u3002",paraId:2,tocIndex:1},{value:"yarn deploy_[dev/qa/prod]",paraId:2,tocIndex:1},{value:"\uFF1A \u6253\u5305\u5E76\u53D1\u5E03\uFF0C\u4E14\u4F7F\u7528\u4E0D\u540C\u7684\u6570\u636E\u8BF7\u6C42\u73AF\u5883\uFF0C\u65B9\u4FBF\u5728\u672C\u5730\u6D4B\u8BD5\u3002",paraId:2,tocIndex:1},{value:"\u53D1\u5E03\u4EE3\u7801\u9700\u8981\u81EA\u5DF1\u6DFB\u52A0\uFF0C\u4F8B\u5982\uFF1A",paraId:3,tocIndex:1},{value:'"deploy_dev": "npm run build:dev && <\u53D1\u5E03\u4EE3\u7801>"',paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"yarn serve",paraId:4,tocIndex:1},{value:": \u5728\u672C\u5730\u542F\u52A8\u670D\u52A1\u5668\uFF0C\u65B9\u4FBF\u672C\u5730\u6D4F\u89C8\uFF0C\u6D4B\u8BD5\u3002\uFF08",paraId:4,tocIndex:1},{value:"serve",paraId:4,tocIndex:1},{value:"\u9700\u5168\u5C40\u5B89\u88C5\uFF09",paraId:4,tocIndex:1},{value:` "scripts": {
+`,paraId:49,tocIndex:15},{value:"\u8BE5\u5C5E\u6027\u53EF\u80FD\u53D66\u4E2A\u503C\uFF0C\u9664\u4E86",paraId:50,tocIndex:15},{value:"auto",paraId:50,tocIndex:15},{value:"\uFF0C\u5176\u4ED6\u90FD\u4E0E",paraId:50,tocIndex:15},{value:"align-items",paraId:50,tocIndex:15},{value:"\u5C5E\u6027\u5B8C\u5168\u4E00\u81F4\u3002",paraId:50,tocIndex:15},{value:"\u7B80\u5355\u6613\u61C2\uFF1A\u4E0E\u4F20\u7EDF\u7684\u5E03\u5C40\u65B9\u5F0F\u76F8\u6BD4\uFF0C",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u7684\u8BED\u6CD5\u548C\u7406\u89E3\u8D77\u6765\u66F4\u52A0\u7B80\u5355\uFF0C\u5BB9\u6613\u4E0A\u624B\u3002",paraId:51,tocIndex:16},{value:"\u5F39\u6027\u548C\u81EA\u9002\u5E94\uFF1A",paraId:51,tocIndex:16},{value:"Flex\u5E03",paraId:51,tocIndex:16},{value:"\u5C40\u80FD\u591F\u81EA\u52A8\u9002\u5E94\u4E0D\u540C\u5C3A\u5BF8\u7684\u5C4F\u5E55\uFF0C\u8BA9\u9875\u9762\u66F4\u5177\u6709\u5F39\u6027\u3002",paraId:51,tocIndex:16},{value:"\u7B49\u9AD8\u5E03\u5C40\uFF1A",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u53EF\u4EE5\u65B9\u4FBF\u5730\u5B9E\u73B0\u591A\u5217\u7B49\u9AD8\u5E03\u5C40\u3002",paraId:51,tocIndex:16},{value:"\u5BF9\u9F50\u548C\u6392\u5E8F\uFF1A",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u652F\u6301\u5404\u79CD\u5BF9\u9F50\u65B9\u5F0F\uFF0C\u5305\u62EC\u6C34\u5E73\u548C\u5782\u76F4\u5BF9\u9F50\uFF0C\u5E76\u4E14\u53EF\u4EE5\u901A\u8FC7\u8BBE\u7F6E",paraId:51,tocIndex:16},{value:"order",paraId:51,tocIndex:16},{value:"\u5C5E\u6027\u5BF9\u5B50\u5143\u7D20\u8FDB\u884C\u6392\u5E8F\u3002",paraId:51,tocIndex:16},{value:"\u53EF\u4EE5\u4E0E\u4F20\u7EDF\u5E03\u5C40\u7ED3\u5408\u4F7F\u7528\uFF1A",paraId:51,tocIndex:16},{value:"Flex",paraId:51,tocIndex:16},{value:"\u5E03\u5C40\u5E76\u4E0D\u662F\u5B8C\u5168\u53D6\u4EE3\u4F20\u7EDF\u7684\u5E03\u5C40\u65B9\u5F0F\uFF0C\u5B83\u53EF\u4EE5\u4E0E\u4F20\u7EDF\u5E03\u5C40\u65B9\u5F0F\u7ED3\u5408\u4F7F\u7528\uFF0C\u5B9E\u73B0\u66F4\u7075\u6D3B\u7684\u5E03\u5C40\u6548\u679C\u3002",paraId:51,tocIndex:16},{value:"\u672C\u6587\u6458\u81EA\uFF1A ",paraId:52,tocIndex:16},{value:"Flex \u5E03\u5C40\u6559\u7A0B\uFF1A\u8BED\u6CD5\u7BC7",paraId:52,tocIndex:16}],Wn={},Tn={title:"umi-template",toc:"content",filename:"docs/FEED/web/umi/index.md",lastUpdated:1739969865e3,nav:{title:"\u524D\u7AEF\u5DE5\u7A0B\u5316",order:3,second:{title:"WEB",order:1}},group:{title:"UMI",order:2},description:"umi max",order:1,key:"umi max"},Cd=[{id:"\u4F7F\u7528",depth:2,title:"\u4F7F\u7528"},{id:"\u542F\u52A8\u4EE5\u53CA\u6253\u5305",depth:3,title:"\u542F\u52A8\u4EE5\u53CA\u6253\u5305"},{id:"\u914D\u7F6E",depth:3,title:"\u914D\u7F6E"},{id:"\u83DC\u5355\u914D\u7F6E",depth:3,title:"\u83DC\u5355\u914D\u7F6E"},{id:"\u4E8C\u6B21\u5F00\u53D1",depth:2,title:"\u4E8C\u6B21\u5F00\u53D1"},{id:"\u767B\u5F55\u53CA\u9000\u51FA",depth:3,title:"\u767B\u5F55\u53CA\u9000\u51FA"},{id:"\u914D\u7F6E-1",depth:3,title:"\u914D\u7F6E"},{id:"antd-\u914D\u7F6E",depth:4,title:"antd \u914D\u7F6E"},{id:"\u672C\u5730https",depth:4,title:"\u672C\u5730https"},{id:"\u914D\u7F6Eanalytics",depth:4,title:"\u914D\u7F6Eanalytics"},{id:"\u8FD0\u884C\u65F6\u914D\u7F6E",depth:3,title:"\u8FD0\u884C\u65F6\u914D\u7F6E"},{id:"antd-\u914D\u7F6E-1",depth:4,title:"antd \u914D\u7F6E"},{id:"get-\u8BF7\u6C42\u53C2\u6570\u5E8F\u5217\u5316",depth:4,title:"GET \u8BF7\u6C42\u53C2\u6570\u5E8F\u5217\u5316"},{id:"\u9519\u8BEF\u5904\u7406",depth:4,title:"\u9519\u8BEF\u5904\u7406"},{id:"\u8BF7\u6C42\u62E6\u622A\u5668",depth:4,title:"\u8BF7\u6C42\u62E6\u622A\u5668"},{id:"\u54CD\u5E94\u62E6\u622A\u5668",depth:4,title:"\u54CD\u5E94\u62E6\u622A\u5668"},{id:"\u6743\u9650\u914D\u7F6E",depth:3,title:"\u6743\u9650\u914D\u7F6E"},{id:"\u6DFB\u52A0mock",depth:3,title:"\u6DFB\u52A0mock"},{id:"\u663E\u793A\u5B89\u88C5antd5xx",depth:3,title:"\u663E\u793A\u5B89\u88C5antd(5.x.x)"},{id:"\u6DFB\u52A0git-commit-\u8F85\u52A9\u5907\u6CE8\u4FE1\u606F",depth:3,title:"\u6DFB\u52A0git commit \u8F85\u52A9\u5907\u6CE8\u4FE1\u606F"},{id:"\u5C0F\u7EC4\u4EF6",depth:3,title:"\u5C0F\u7EC4\u4EF6"},{id:"\u5DE5\u5177",depth:3,title:"\u5DE5\u5177"}],To=[{value:"\u672C\u6846\u67B6\u57FA\u4E8E",paraId:0},{value:"Umi Max",paraId:0},{value:"\u57FA\u7840\u6846\u67B6\u505A\u4E86\u4E8C\u6B21\u5F00\u53D1\u3002\u5982\u679C\u4F60\u5BF9",paraId:0},{value:"Umi Max",paraId:0},{value:"\u8FD8\u4E0D\u4E86\u89E3\uFF0C\u53EF\u4EE5\u5148\u770B\u770B\u5B83\u7684",paraId:0},{value:"\u5B98\u65B9\u6587\u6863",paraId:0},{value:"\u3002\u672C\u6587\u6863\u4E3B\u8981\u8BB2\u8FF0\u8BE5\u6846\u67B6\u7684\u4F7F\u7528\u65B9\u6CD5\u4EE5\u53CA\u76F8\u8F83\u4E8E",paraId:0},{value:"Umi Max",paraId:0},{value:"\u57FA\u7840\u6846\u67B6\uFF0C\u505A\u4E86\u54EA\u4E9B\u66F4\u6539\u548C\u6DFB\u52A0\u4EE5\u65B9\u4FBF\u6211\u4EEC\u66F4\u597D\u7684\u76F4\u63A5\u4F7F\u7528\u3002",paraId:0},{value:"\u56E0\u4E3A\u5728 ",paraId:1,tocIndex:1},{value:"package.json",paraId:1,tocIndex:1},{value:" \u4E2D\u914D\u7F6E\u4E86\u5982\u4E0B",paraId:1,tocIndex:1},{value:"script",paraId:1,tocIndex:1},{value:"\uFF0C\u6240\u4EE5\u53EF\u4EE5\u6267\u884C\u4EE5\u4E0B\u64CD\u4F5C\uFF1A",paraId:1,tocIndex:1},{value:"yarn start",paraId:2,tocIndex:1},{value:"\uFF1A\u542F\u52A8\u9879\u76EE\u3002",paraId:2,tocIndex:1},{value:"yarn build",paraId:2,tocIndex:1},{value:"\uFF1A\u6253\u5305\u9879\u76EE\u3002",paraId:2,tocIndex:1},{value:"yarn deploy_[dev/qa/prod]",paraId:2,tocIndex:1},{value:"\uFF1A \u6253\u5305\u5E76\u53D1\u5E03\uFF0C\u4E14\u4F7F\u7528\u4E0D\u540C\u7684\u6570\u636E\u8BF7\u6C42\u73AF\u5883\uFF0C\u65B9\u4FBF\u5728\u672C\u5730\u6D4B\u8BD5\u3002",paraId:2,tocIndex:1},{value:"\u53D1\u5E03\u4EE3\u7801\u9700\u8981\u81EA\u5DF1\u6DFB\u52A0\uFF0C\u4F8B\u5982\uFF1A",paraId:3,tocIndex:1},{value:'"deploy_dev": "npm run build:dev && <\u53D1\u5E03\u4EE3\u7801>"',paraId:3,tocIndex:1},{value:"\u3002",paraId:3,tocIndex:1},{value:"yarn serve",paraId:4,tocIndex:1},{value:": \u5728\u672C\u5730\u542F\u52A8\u670D\u52A1\u5668\uFF0C\u65B9\u4FBF\u672C\u5730\u6D4F\u89C8\uFF0C\u6D4B\u8BD5\u3002\uFF08",paraId:4,tocIndex:1},{value:"serve",paraId:4,tocIndex:1},{value:"\u9700\u5168\u5C40\u5B89\u88C5\uFF09",paraId:4,tocIndex:1},{value:` "scripts": {
     "build": "max build",
     "build:dev": "cross-env DEPLOY_ENV=dev max build ",
     "build:prod": "cross-env DEPLOY_ENV=production max build ",
@@ -10477,7 +10477,7 @@ function diffChildren(fiber: Fiber, newChildren: React.ReactNode) {
     "deploy_dev": "npm run build:dev",
     "deploy_prod": "npm run build:prod",
     "deploy_qa": "npm run build:qa",
-    "serve": "serve -s dist"
+    "serve": "serve -s dist",
     "start": "cross-env DEPLOY_ENV=local max dev",
     "start:dev": "cross-env DEPLOY_ENV=dev MOCK=none max dev"
   },
